@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import {useRef} from "react";
 import "../styling/navbar.css"
-export default function() {
+
+export default function () {
     const navRef = useRef();
 
     const showNavbar = () => {
@@ -18,15 +19,19 @@ export default function() {
                 <a href="/#">Contact</a>
                 <a href="/#">About us</a>
                 <button
+
                     className="nav-btn nav-close-btn"
                     onClick={showNavbar}>
+                    <i className="material-icons">close</i>
+
                 </button>
             </nav>
             <button
-
                 className="nav-btn"
                 onClick={showNavbar}>
+                <i className="material-icons hamburger-menu">menu</i>
             </button>
         </header>
-    );
+    )
+        ;
 }
