@@ -8,7 +8,7 @@ export default function () {
         <div className="row">
           <div className="footer-col">
             <h4>Kyoto Hut</h4>
-            <p className="text-container">Your go-to restaurant for the best sushi pizza in town!
+            <p>Your go-to restaurant for the best sushi pizza in town!
             Our unique fusion of Japanese and Italian cuisine creates a burst of
             flavor and texture in every bite. With fresh, high-quality
             ingredients and a variety of options to choose from, you're sure to
