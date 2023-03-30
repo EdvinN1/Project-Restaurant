@@ -1,22 +1,16 @@
 .wrapper{
-    height: 100vh;
+    height: 80vh;
     background-color: black;
-}
-
-.backgroundImg{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    height: 600px;
-    width: 800px;
-    opacity: 1.0;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 h1{
     font-size: 40px;
     text-align: center;
     color:azure;
+    padding-top: 5rem;
 }
 
 .paragraph{
@@ -24,3 +18,71 @@ h1{
     text-align: center;
     color:azure;
 }
+
+.imgWrapper{
+    background-color: aquamarine;
+}
+
+.slide1, .slide2, .slide3, .slide4, .slide5{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    opacity: 1.0;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slide1{ animation: fade1 48s infinite; }
+.slide2{ animation: fade2 48s infinite; }
+.slide3{ animation: fade3 48s infinite; }
+.slide4{ animation: fade4 48s infinite; }
+.slide5{ animation: fade5 48s infinite; }
+
+@keyframes fade1{
+    0%{opacity: 1;}
+    20%{opacity: 0;}
+    40%{opacity: 0;}
+    60%{opacity: 0;}
+    80%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+@keyframes fade2{
+    0%{opacity: 0;}
+    20%{opacity: 1;}
+    40%{opacity: 0;}
+    60%{opacity: 0;}
+    80%{opacity: 0;}
+    100%{opacity: 0;}
+}
+
+@keyframes fade3{
+    0%{opacity: 0;}
+    20%{opacity: 0;}
+    40%{opacity: 1;}
+    60%{opacity: 0;}
+    80%{opacity: 0;}
+    100%{opacity: 0;}
+}
+
+@keyframes fade4{
+    0%{opacity: 0;}
+    20%{opacity: 0;}
+    40%{opacity: 0;}
+    60%{opacity: 1;}
+    80%{opacity: 0;}
+    100%{opacity: 0;}
+}
+
+@keyframes fade5{
+    0%{opacity: 0;}
+    20%{opacity: 0;}
+    40%{opacity: 0;}
+    60%{opacity: 0;}
+    80%{opacity: 1;}
+    100%{opacity: 0;}
+}
+
