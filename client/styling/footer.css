@@ -1,4 +1,33 @@
-footer {
-    background-color: black;
-    color: white;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.text-container {
+    max-width: 400px;
+}
+
+.container {
+    max-width: 100%;
+    background-color: #24262b;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.row {
+    display: flex;
+}
+
+.footer {
+    background-color: #24262b;
+    padding: 70px 0;
+}
+
+.footer-col {
+
 }
