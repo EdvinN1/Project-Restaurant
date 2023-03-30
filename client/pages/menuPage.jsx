@@ -15,7 +15,7 @@ export default function () {
 		</ul>
 	</nav>
 	<main>
-		<section id="starters">
+		<div id="starters">
 			<h2>Starters</h2>
 			<ul>
 				<li>
@@ -31,7 +31,7 @@ export default function () {
 					<button>Add to Cart</button>
 				</li>
 			</ul>
-		</section>
+		</div>
 		<div id="mains">
 			<h2>Mains</h2>
 			<ul>

@@ -15,14 +15,10 @@ nav ul {
 nav li {
     margin: 0 10px;
 }
-nav a {
-    color: #000;
-    text-decoration: none;
-}
 main {
     padding: 20px;
 }
-section {
+div {
     margin-bottom: 20px;
 }
 h2 {
