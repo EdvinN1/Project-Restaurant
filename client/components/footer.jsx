@@ -17,9 +17,12 @@ export default function () {
           </div>
           <div className="footer-col">
             <h4>Contact</h4>
-            <ul>
-              <li><a href="#"></a></li>
-            </ul>
+            <p>Kyoto Hut Sushi Pizza <br></br>
+            123 This Street <br></br>
+            Lund, 222 22 <br></br>
+            Phone: 1234-567 890 <br></br>
+            Email: info@kyotohut.com
+            </p>
           </div>
           <div className="footer-col">
             <h4>Quick menu</h4>

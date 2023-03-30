@@ -6,6 +6,11 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+p {
+  color: #bbbbbb;
+  font-size: 16px;
+}
+
 * {
   margin: 0;
   padding: 0;
