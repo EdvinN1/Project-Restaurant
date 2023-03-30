@@ -3,6 +3,7 @@ export default function(){
         <body style={{ 
             backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Sushi_pizza_%281%29.jpg/1920px-Sushi_pizza_%281%29.jpg")',
             backgroundSize: '100% 100%',
+            height: '800px',
             width: '1200px',
             opacity: "1.0"
           }}>
