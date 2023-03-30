@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
+import Menu from '../pages/menuPage'
 
 import {  
   Route,
@@ -15,8 +16,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           createBrowserRouter(
               createRoutesFromElements(
                   <Route path="/" element={<App />}>
+                  
               
                     {/* <Route index element={<Home />}></Route>    */}
+                    <Route path="Menu" element={<Menu />} />
 
                   </Route>
               )
