@@ -19,10 +19,6 @@ h1{
     color:azure;
 }
 
-.imgWrapper{
-    background-color: aquamarine;
-}
-
 .slide1, .slide2, .slide3, .slide4, .slide5{
     display: block;
     margin-left: auto;
