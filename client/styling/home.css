@@ -3,24 +3,139 @@
     background-color: black;
 }
 
-.backgroundImg{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    height: 600px;
-    width: 800px;
-    opacity: 1.0;
+.imgContainer{
+    display: flex;
+    height: 430px;
+    color: rgb(23, 126, 185);
+    align-items: center;
+    justify-content: center;
 }
 
 h1{
     font-size: 40px;
     text-align: center;
     color:azure;
+    padding-top: 4rem;
+}
+
+.btn{
+    background-color: rgba(240, 240, 240, 0.26);
+    border: 2px solid #DFDFDF;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: Inter, sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    max-width: 100%;
+    padding: 14px 22px;
+    text-decoration: none;
+    transition: all .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 200px;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .paragraph{
     font-size: large;
     text-align: center;
     color:azure;
+}
+
+.slide1, .slide2, .slide3, .slide4, .slide5{
+    position: absolute;
+    height: 400px;
+}
+
+.slide1{ animation: fade1 12s infinite; }
+.slide2{ animation: fade2 12s infinite; }
+.slide3{ animation: fade3 12s infinite; }
+.slide4{ animation: fade4 12s infinite; }
+.slide5{ animation: fade5 12s infinite; }
+
+@keyframes fade1{
+    0%{opacity: 1;}
+    20%{opacity: 0;}
+    40%{opacity: 0;}
+    60%{opacity: 0;}
+    80%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+@keyframes fade2{
+    0%{opacity: 0;}
+    20%{opacity: 1;}
+    40%{opacity: 0;}
+    60%{opacity: 0;}
+    80%{opacity: 0;}
+    100%{opacity: 0;}
+}
+
+@keyframes fade3{
+    0%{opacity: 0;}
+    20%{opacity: 0;}
+    40%{opacity: 1;}
+    60%{opacity: 0;}
+    80%{opacity: 0;}
+    100%{opacity: 0;}
+}
+
+@keyframes fade4{
+    0%{opacity: 0;}
+    20%{opacity: 0;}
+    40%{opacity: 0;}
+    60%{opacity: 1;}
+    80%{opacity: 0;}
+    100%{opacity: 0;}
+}
+
+@keyframes fade5{
+    0%{opacity: 0;}
+    20%{opacity: 0;}
+    40%{opacity: 0;}
+    60%{opacity: 0;}
+    80%{opacity: 1;}
+    100%{opacity: 0;}
+}
+
+@media (max-width: 900px) {
+    .slide1, .slide2, .slide3, .slide4, .slide5{
+        height: 300px;
+    }
+    .imgContainer{
+        height: 250px;
+    }
+    .btn{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .slide1, .slide2, .slide3, .slide4, .slide5{
+        height: 250px;
+    }
+    .btn{
+        top: 85%;
+    }
+}
+
+@media (max-width: 480px){
+    .slide1, .slide2, .slide3, .slide4, .slide5{
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) and (min-height: 670px){
+    .slide1, .slide2, .slide3, .slide4, .slide5{
+        height: 200px;
+    }
+    .btn{
+        top: 70%;
+    }
 }

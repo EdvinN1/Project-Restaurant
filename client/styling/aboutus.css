@@ -1,0 +1,18 @@
+.section-about {
+    background-color: black;
+    height: 100vh;
+    overflow: auto;
+}
+
+.title {
+    padding-top: 50px;
+}
+
+.info {
+    font-size: 1rem;
+    color: white;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 50px;
+    text-align: center;
+}

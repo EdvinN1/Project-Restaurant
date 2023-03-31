@@ -1,5 +1,5 @@
 
-import Home from '../components/Home.jsx'
+import Home from '../components/home.jsx'
 
 function Homepage() {
   return (
