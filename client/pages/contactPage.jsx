@@ -9,7 +9,6 @@ export default function () {
           If you have any questions or need help, please fill out the form
           below. We do our best to respond within 1 business day.
         </p>
-
         <div className="contact-box">
           <div className="contact-left">
             <h3>Send your request</h3>
@@ -32,7 +31,6 @@ export default function () {
                   ></input>
                 </div>
               </div>
-
               <div className="input-row">
                 <div className="input-group">
                   <label>Email</label>
@@ -51,7 +49,6 @@ export default function () {
                   ></input>
                 </div>
               </div>
-
               <label>Message</label>
               <textarea rows="5" placeholder="Your message"></textarea>
               <button className="submit-contact" type="submit">
@@ -61,23 +58,23 @@ export default function () {
           </div>
           <div className="contact-right">
             <h3>Reach us here</h3>
-
-                <table>
-                    <tr>
-                        <td>Email</td>
-                        <td>info@kyotohut.com</td>
-                    </tr>
-                    <tr>
-                        <td>Phone</td>
-                        <td>1234-567 890</td>
-                    </tr>
-                    <tr>
-                        <td>Address</td>
-                        <td>123 This Street <br></br>
-                            Lund, 222 22 </td>
-                    </tr>
-                </table>
-
+            <table>
+              <tr>
+                <td>Email</td>
+                <td>info@kyotohut.com</td>
+              </tr>
+              <tr>
+                <td>Phone</td>
+                <td>1234-567 890</td>
+              </tr>
+              <tr>
+                <td>Address</td>
+                <td>
+                  123 This Street <br></br>
+                  Lund, 222 22{" "}
+                </td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
