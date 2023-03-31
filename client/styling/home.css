@@ -13,6 +13,33 @@ h1{
     padding-top: 5rem;
 }
 
+.btn{
+    align-items: center;
+    background-color: rgba(240, 240, 240, 0.26);
+    border: 2px solid #DFDFDF;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    font-family: Inter, sans-serif;
+    font-size: 18px;
+    justify-content: center;
+    line-height: 28px;
+    max-width: 100%;
+    padding: 14px 22px;
+    text-decoration: none;
+    transition: all .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 200px;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .paragraph{
     font-size: large;
     text-align: center;
@@ -26,7 +53,6 @@ h1{
     position: absolute;
     opacity: 1.0;
     top: 50%;
-    transform: translateY(-50%);
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -82,3 +108,12 @@ h1{
     100%{opacity: 0;}
 }
 
+@media (max-width: 900px) {
+    .slide1, .slide2, .slide3, .slide4, .slide5{
+        width: 80%;
+        transform: translate(-50%, -30%);
+    }
+    .btn{
+        font-size: 14px;
+    }
+}
