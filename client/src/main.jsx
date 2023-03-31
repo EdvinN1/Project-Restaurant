@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import Home from '../pages/homePage.jsx'
+import AboutUs from '../pages/aboutUsPage'
 
 import {  
   Route,
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               createRoutesFromElements(
                   <Route path="/" element={<App />}>
                   <Route index element={<Home />}></Route>    
+                  <Route path='/about-us' element={<AboutUs />}></Route>
                   </Route>
               )
           )
