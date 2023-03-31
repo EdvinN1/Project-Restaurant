@@ -12,7 +12,7 @@ export default function () {
 
     return (
         <header>
-            <h3>LOGO</h3>
+            <h3>KYOTO HUT</h3>
             <nav ref={navRef}>
                 <a href="/#">Home</a>
                 <a href="/#">Menu</a>
@@ -26,11 +26,16 @@ export default function () {
 
                 </button>
             </nav>
+            <div className={"shopcart-hmbrgr-icons-wrapper"}>
+            <button className={"shopping-cart-button"}>
+                <i className="material-icons">shopping_cart</i>
+            </button>
             <button
                 className="nav-btn"
                 onClick={showNavbar}>
                 <i className="material-icons hamburger-menu">menu</i>
             </button>
+            </div>
         </header>
     )
         ;
