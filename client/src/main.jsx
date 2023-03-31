@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import Home from '../pages/HomePage.jsx'
+import Home from '../pages/homePage.jsx'
 import AboutUs from '../pages/aboutUsPage'
 
 import {  
