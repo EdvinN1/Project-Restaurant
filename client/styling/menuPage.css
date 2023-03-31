@@ -1,27 +1,34 @@
-header {
+
+#menu-header {
     text-align: center;
+    color: black;
 }
-nav {
+#menu-h1 {
+    color: black;
+}
+.menu-nav {
     border-bottom: 1px solid #ccc;
     padding: 10px;
 }
-nav ul {
+.menu-nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
+    text-align: center;
+    align-items: center; 
 }
-nav li {
+.menu-nav li {
     margin: 0 10px;
 }
-main {
+.menu-main {
     padding: 20px;
 }
-div {
+.menupage-div {
     margin-bottom: 20px;
 }
-h2 {
+.menu-choices {
     margin-top: 0;
 }
 .menuList {
@@ -32,7 +39,7 @@ h2 {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 20px;
 }
-li {
+.menupage-cards {
     background-color: #fff;
     padding: 20px;
     border: 1px solid #ccc;
@@ -41,12 +48,25 @@ li {
     position: relative;
     overflow: hidden;
 }
-li:hover {
+.menupage-header-cards{
+    list-style: none;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+.menupage-header-cards a{
+text-decoration: none;
+}
+.menupage-cards:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     transform: translateY(-5px);
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
-h3 {
+.menu-orders {
     margin-top: 0;
     font-size: 1.2rem;
 }
@@ -56,8 +76,13 @@ h3 {
     font-size: 1rem;
     font-weight: bold;
     border-radius: 5px;
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+    position: absolute;  
+    bottom: 5px;
+    right: 5px;
     cursor: pointer;
+}
+@media only screen and (max-width: 460px) {
+.menupage-header-cards {
+    padding: 5px;
+}
 }
