@@ -1,11 +1,12 @@
-
 import React from "react";
-
+import '../styling/account.css'
+import { validateInputs } from "./validate";
 import { Link } from "react-router-dom";
 
 const submit = (e) => {
     e.preventDefault()
 
+    validateInputs()
 }
 
 
