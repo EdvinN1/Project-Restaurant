@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import Home from '../pages/homePage.jsx'
 import AboutUs from '../pages/aboutUsPage'
+import CreateAccount from '../pages/createAccountPage'
+import Login from '../pages/loginPage'
 
 import {  
   Route,
@@ -19,6 +21,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                   <Route path="/" element={<App />}>
                   <Route index element={<Home />}></Route>    
                   <Route path='/about-us' element={<AboutUs />}></Route>
+                  <Route path='/create-account' element={<CreateAccount />}></Route>
+                  <Route path='/login' element={<Login />}></Route>
                   </Route>
               )
           )

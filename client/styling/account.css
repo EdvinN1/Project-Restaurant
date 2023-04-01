@@ -3,6 +3,16 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+.account-page {
+    height: 80vh;
+}
+
+.account-title {
+    font-size: large;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 #button-text {
     background-color: transparent;
     color: black;
@@ -10,9 +20,13 @@ body {
     border: none;
 }
 
+.button-account {
+    cursor: pointer;
+}
+
 .button-group {
     flex-direction: column;
-    width: 300px;
+    width: 260px;
     margin-top: 57px;
 }
 
@@ -22,8 +36,8 @@ body {
 
 .form {
     width: 300px;
-    height: 390px;
-    margin: 20vh auto 0 auto;
+    height: 500px;
+    margin: 15vh auto 0 auto;
     padding: 20px;
     background-color: whitesmoke;
     border-radius: 4px;

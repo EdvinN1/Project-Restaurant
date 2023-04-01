@@ -1,6 +1,6 @@
 import React from "react";
 import '../styling/account.css'
-import { validateInputs } from "./validate";
+import { validateInputs } from "../components/validateInputs";
 import { Link } from "react-router-dom";
 
 const submit = (e) => {
@@ -9,13 +9,12 @@ const submit = (e) => {
     validateInputs()
 }
 
-
 export default function () {
     return (
-        <section>
-            <div className="container">
-                <form className="form" action="/src/components/Login.jsx" onSubmit={submit}>
-                    <h1>Registration</h1>
+        <section className="account-page">
+            <div className="container-account">
+                <form className="form" method="POST" onSubmit={submit}>
+                    <h1 className="account-title">Registration</h1>
                     <div className="input-control">
                         <label htmlFor="username">Username</label>
                         <input id="username" name="username" type="text"></input>
@@ -36,8 +35,8 @@ export default function () {
                         <input id="password2" name="password2" type="password"></input>
                         <div className="error"></div>
                     </div>
-                        <button type="submit">Sign up</button>
-                        <Link to="/"><button id="button-text">Already have an account? Login here.</button></Link>
+                        <button className="button-account" type="submit">Sign up</button>
+                        <Link to="/login"><button id="button-text">Already have an account? Login here.</button></Link>
                 </form>
             </div>
         </section>
