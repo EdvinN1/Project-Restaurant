@@ -1,4 +1,5 @@
 import {useRef} from "react";
+import { Link } from "react-router-dom";
 import "../styling/navbar.css"
 
 export default function () {
@@ -14,10 +15,10 @@ export default function () {
         <header>
             <h3>KYOTO HUT</h3>
             <nav ref={navRef}>
-                <a href="/#">Home</a>
-                <a href="/#">Menu</a>
-                <a href="/#">Contact</a>
-                <a href="/#">About us</a>
+                <Link to="/">Home</Link>
+                <Link to="/" >Menu</Link>
+                <Link to="/contact" >Contact</Link>
+                <Link to="/about-us" >About us</Link>
                 <button
 
                     className="nav-btn nav-close-btn"
