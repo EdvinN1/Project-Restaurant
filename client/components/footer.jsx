@@ -30,7 +30,7 @@ export default function () {
               <li><Link to={"/"}>Home</Link></li>
               <li><Link to={"/"}>Menu</Link></li>
               <li><Link to={"/about-us"}>About us</Link></li>
-              <li><Link to={"/"}>Contact</Link></li>
+              <li><Link to={"/contact"}>Contact</Link></li>
             </ul>
           </div>
           <div className="footer-col">
