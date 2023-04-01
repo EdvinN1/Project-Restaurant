@@ -1,0 +1,38 @@
+.adminWrapper{
+    height: 100vh;
+    background-color: black;
+    color: beige;
+}
+
+.item1 {
+    grid-area: menu;
+    text-align: left;
+}
+
+.item2 {
+    grid-area: main;
+    text-align: center;
+}
+
+.item3 {
+    grid-area: right;
+    text-align: center;
+}
+
+.adminGridContainer{
+    display: grid;
+    height: 100%;
+    grid-template-areas:
+    'menu main main main right right'
+    'menu main main main right right'
+    'menu main main main right right';
+    gap: 5px;
+    background-color: rgb(98, 149, 194);
+    padding: 5px;
+}
+
+.adminGridContainer > div{
+    background-color:coral;
+    font-size:xx-large;
+    padding: 20px;
+}
