@@ -1,6 +1,6 @@
 .section-contact {
   height: 100vh;
-  padding-top: 175px;
+  padding-top: 75px;
 }
 
 .container-contact {
@@ -66,6 +66,12 @@ textarea {
   border-radius: 30px;
   margin-top: 20px;
   box-shadow: 0px 5px 15px 0px rgba(28, 0, 181, 0.3);
+}
+
+.submit-contact:hover {
+  scale: 1.1;
+  cursor: pointer;
+  transition: ease-in 0.3s;
 }
 
 tr td:first-child {
