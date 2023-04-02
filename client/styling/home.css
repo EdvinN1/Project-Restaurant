@@ -104,6 +104,12 @@ h1{
     100%{opacity: 0;}
 }
 
+@media (min-width: 1080px) {
+    .btn{
+        top: 55%;
+    }
+}
+
 @media (max-width: 900px) {
     .slide1, .slide2, .slide3, .slide4, .slide5{
         height: 300px;

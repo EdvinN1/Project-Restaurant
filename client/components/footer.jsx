@@ -36,9 +36,9 @@ export default function () {
           <div className="footer-col">
             <h4>Follow us!</h4>
                 <ul className="social-links">
-                  <a href="https://www.facebook.com/" target={"_blank"}><i class="fab fa-facebook-f"></i></a>
-                  <a href="https://twitter.com/" target={"_blank"}><i class="fab fa-twitter"></i></a>
-                  <a href="https://www.instagram.com/" target={"_blank"}><i class="fab fa-instagram"></i></a>
+                  <a href="https://www.facebook.com/" target={"_blank"}><i className="fab fa-facebook-f"></i></a>
+                  <a href="https://twitter.com/" target={"_blank"}><i className="fab fa-twitter"></i></a>
+                  <a href="https://www.instagram.com/" target={"_blank"}><i className="fab fa-instagram"></i></a>
                 </ul>
           </div>
         </div>
