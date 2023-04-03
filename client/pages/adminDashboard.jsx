@@ -34,7 +34,7 @@ export default function(){
                         <li><button className="adminBtn" onClick={() => handleCategoryClick("Entrée")}>Entrée</button></li>
                         <li><button className="adminBtn" onClick={() => handleCategoryClick("Desserts")}>Desserts</button></li>
                         <li><button className="adminBtn" onClick={() => handleCategoryClick("Orders")}>Orders</button></li>
-                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Settings")}>Settings</button></li>
+                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Settings")}>current orders</button></li>
                     </ul>
                 </div>
                 <div className="item2">

@@ -6,7 +6,8 @@ export default function(){
 .then(data => console.log(data))
 .catch(error => console.error(error)) */
 let number = Math.floor(Math.random() * 100 + 1);
-const data ={ orderId: "123", orderDate: "230403", restaurantID: number};
+let numberDate = Math.floor(Math.random() * 31 + 1);
+const data ={ orderId: "123", orderDate: numberDate, restaurantID: number};
 fetch('http://localhost:3000/orders',{
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -24,7 +25,7 @@ fetch('http://localhost:3000/orders',{
 
 return (
     <div>
-        {"order"}
+        {"orders"}
     </div>
 )
 }
