@@ -1,9 +1,7 @@
-
 import Home from '../components/home.jsx'
 
-function Homepage() {
+export default function() {
   return (
     <Home />
   )
 }
-export default Homepage
