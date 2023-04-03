@@ -20,3 +20,7 @@ api.get('/', async (request, response) => {
     response.json({"result": "created"})
 
 })
+
+//routes
+import createAccountRouter from './routes/createAccountRoute.js'
+api.use('/api/accounts', createAccountRouter)
