@@ -4,10 +4,18 @@ const loginRouter = Router()
 
 import mongoose, {Schema} from 'mongoose'
 
+import crypto from 'crypto'
+const salt = "paraplane".toString('hex')
+
+function getHash(password){ // utility
+    let hash = crypto.pbkdf2Sync(password, salt, 1000, 64, `sha512`).toString(`hex`)
+    return hash
+}
+
 loginRouter.post('/', async (request, response)=>{
     let account = await mongoose.models.accounts.findOne({
         email: request.body.email,
-        password: request.body.password
+        password: getHash(request.body.password) // encrypt the entered password
     })
 
     if(account){
@@ -27,13 +35,13 @@ loginRouter.get('/', async (request, response)=>{
         // first, always, check with database
         let account = await mongoose.models.accounts.findOne({
             email: request.session.account.email,
-            password: request.session.account.password
+            password: getHash(request.session.account.password)
         })
         // respond
         if(account){            
             response.json({
                 name: request.session.account.name,
-                email: request.session.account.email,
+                email: request.session.account.password,
                 loggedIn: true
             })
             return
