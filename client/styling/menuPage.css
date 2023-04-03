@@ -1,0 +1,90 @@
+
+#menu-h1 {
+    color: black;
+}
+.menu-nav {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center; 
+}
+.menu-nav li {
+    margin: 0 5px;
+}
+.menu-main {
+    padding: 20px;
+}
+.menupage-div {
+    margin-bottom: 20px;
+}
+.menu-choices {
+    margin-top: 0;
+}
+.menuList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+.menupage-cards {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+.menupage-header-cards{
+    list-style: none;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+.menupage-header-cards a{
+text-decoration: none;
+color: black;
+font-size: auto;
+}
+.menupage-cards:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.menu-orders {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+.add-to-cart {
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    position: absolute;  
+    bottom: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+@media only screen and (max-width: 460px) {
+.menupage-header-cards {
+    padding: 5px;
+}
+.menupage-header-cards a {
+    font-size: small;
+    color: black;
+}
+.menu-nav li {
+    margin: 0;
+}
+}

@@ -30,15 +30,15 @@ export default function () {
               <li><Link to={"/"}>Home</Link></li>
               <li><Link to={"/"}>Menu</Link></li>
               <li><Link to={"/about-us"}>About us</Link></li>
-              <li><Link to={"/"}>Contact</Link></li>
+              <li><Link to={"/contact"}>Contact</Link></li>
             </ul>
           </div>
           <div className="footer-col">
             <h4>Follow us!</h4>
                 <ul className="social-links">
-                  <a href="https://www.facebook.com/" target={"_blank"}><i class="fab fa-facebook-f"></i></a>
-                  <a href="https://twitter.com/" target={"_blank"}><i class="fab fa-twitter"></i></a>
-                  <a href="https://www.instagram.com/" target={"_blank"}><i class="fab fa-instagram"></i></a>
+                  <a href="https://www.facebook.com/" target={"_blank"}><i className="fab fa-facebook-f"></i></a>
+                  <a href="https://twitter.com/" target={"_blank"}><i className="fab fa-twitter"></i></a>
+                  <a href="https://www.instagram.com/" target={"_blank"}><i className="fab fa-instagram"></i></a>
                 </ul>
           </div>
         </div>
