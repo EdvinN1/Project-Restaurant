@@ -6,6 +6,8 @@ import Home from "../pages/homePage.jsx";
 import AboutUs from "../pages/aboutUsPage";
 import AdminDashboard from "../pages/adminDashboard";
 import Contact from "../pages/contactPage";
+import CreateAccount from "../pages/createAccountPage";
+import Login from "../pages/loginPage";
 
 import {
   Route,
@@ -25,6 +27,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="/about-us" element={<AboutUs />}></Route>
             <Route path="/admin-section" element={<AdminDashboard />}></Route>
             <Route path="/contact" element={<Contact />}></Route>
+            <Route path="/create-account" element={<CreateAccount />}></Route>
+            <Route path="/login" element={<Login />}></Route>
           </Route>
         )
       )}
