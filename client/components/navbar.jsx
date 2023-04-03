@@ -11,9 +11,9 @@ export default function () {
     };
 
     return (
-        <header>
+        <header className={"navbar-header"}>
             <h3>KYOTO HUT</h3>
-            <nav ref={navRef}>
+            <nav className={"navbar-nav"} ref={navRef}>
                 <a href="/#">Home</a>
                 <a href="/#">Menu</a>
                 <a href="/#">Contact</a>

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");
+
 * {
     padding: 0;
     margin: 0;
@@ -13,7 +14,7 @@
     --textColor: #eee;
 }
 
-header {
+.navbar-header {
     position: sticky;
     top: 0;
     display: flex;
@@ -27,21 +28,23 @@ header {
     z-index: 2;
 }
 
-nav a {
+.navbar-nav a {
     margin: 0 1rem;
     color: var(--textColor);
     text-decoration: none;
 }
 
-nav a:hover {
+.navbar-nav a:hover {
     color: var(--secondaryColor);
 }
-.shopcart-hmbrgr-icons-wrapper{
+
+.shopcart-hmbrgr-icons-wrapper {
     display: flex;
     justify-content: flex-start;
     gap: 10px;
 }
-header .shopping-cart-button {
+
+.navbar-header .shopping-cart-button {
     padding: 5px;
     cursor: pointer;
     background: transparent;
@@ -51,7 +54,7 @@ header .shopping-cart-button {
     font-size: 1.8rem;
 }
 
-header .nav-btn {
+.navbar-header .nav-btn {
     display: none;
     padding: 5px;
     cursor: pointer;
@@ -63,19 +66,19 @@ header .nav-btn {
     font-size: 1.8rem;
 }
 
-header div,
-nav {
+.navbar-header div,
+.navbar-nav {
     display: flex;
     align-items: center;
 }
 
 @media only screen and (max-width: 1024px) {
-    header .nav-btn {
+    .navbar-header .nav-btn {
         display: contents;
         opacity: 1;
     }
 
-    header nav {
+    .navbar-header .navbar-nav {
         position: fixed;
         top: -100vh;
         left: 0;
@@ -87,20 +90,36 @@ nav {
         justify-content: center;
         gap: 1.5rem;
         background-color: var(--mainColor);
-        transition: 1s;
+        transition: 0.5s;
     }
 
-    header .responsive_nav {
+    .navbar-header .responsive_nav {
         transform: translateY(100vh);
     }
 
-    nav .nav-close-btn {
+    .navbar-nav .nav-close-btn {
         position: sticky;
         top: 2rem;
         right: 2rem;
     }
 
-    nav a {
+    .navbar-nav a {
         font-size: 1.5rem;
+    }
+}
+@media only screen and (max-width: 300px){
+    .navbar-header .navbar-nav {
+        position: fixed;
+        top: -120vh;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background-color: var(--mainColor);
+        transition: 0.5s;
     }
 }

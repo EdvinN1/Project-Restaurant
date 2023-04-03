@@ -29,7 +29,9 @@ export default function () {
                     {items.map((item, index) => (
                         <li key={index} className="shopping-cart__item">
                             {item}{' '}
-                            <button className="shopping-cart__button" onClick={() => handleRemoveItem(index)}>Remove
+                            <p className={"price-per-item"}>Price: 200$</p>
+                            <input className={"shopping-cart-input"} defaultValue={1} min={1} max={100} type={"number"}/>
+                            <button className={"shopping-cart__button"} onClick={() => handleRemoveItem(index)}>Remove
                             </button>
                         </li>
                     ))}
