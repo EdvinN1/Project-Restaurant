@@ -3,6 +3,23 @@ const api = express()
 
 api.use(express.json())
 
+// sessions
+
+import session from 'express-session'
+
+api.use(session({
+
+   secret: 'keyboard cat dskjdsfkjhrjsd',
+   resave: false,
+   saveUninitialized: true, // false = create session (cookie) when needed
+   cookie: { 
+      secure: false, // true in production
+      httpOnly: true, // cookies are not available in javascript
+      maxAge: 365 * 24 * 60 * 60 * 1000 // days * hours * ... ms
+   }  
+
+}))
+
 import mongoose from 'mongoose'
 const conn = "mongodb+srv://projekt:12345@cluster.oduwork.mongodb.net/test"
 
@@ -22,5 +39,8 @@ api.get('/', async (request, response) => {
 })
 
 //routes
-import createAccountRouter from './routes/createAccountRoute.js'
-api.use('/api/accounts', createAccountRouter)
+import accountRouter from './routes/accountRoute.js'
+api.use('/api/accounts', accountRouter)
+
+import loginRouter from './routes/loginRoute.js'
+api.use('/api/login', loginRouter)
