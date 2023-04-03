@@ -1,0 +1,63 @@
+.adminWrapper{
+    height: 100vh;
+    background-color: black;
+    color: beige;
+}
+
+.item1 {
+    grid-area: menu;
+    text-align: left;
+}
+
+.item2 {
+    grid-area: main;
+    text-align: center;
+}
+
+.item3 {
+    grid-area: right;
+    text-align: center;
+}
+
+.adminGridContainer{
+    display: grid;
+    height: 100%;
+    grid-template-areas:
+    'menu main main main right right'
+    'menu main main main right right'
+    'menu main main main right right';
+    grid-template-columns: 300px repeat(3, 1fr) 150px;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    background-color: rgb(124, 141, 157);
+    padding: 5px;
+}
+
+.adminGridContainer > div{
+    background-color:rgb(130, 112, 106);
+    font-size:xx-large;
+    padding: 20px;
+}
+
+.adminBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  .adminBtn:hover {
+    background-color: #0062cc;
+  }
+  
+  .adminBtn:active {
+    box-shadow: none;
+    transform: translateY(2px);
+  }
+  

@@ -4,6 +4,7 @@ import App from './App'
 import Menu from '../pages/menuPage'
 import Home from '../pages/homePage.jsx'
 import AboutUs from '../pages/aboutUsPage'
+import AdminDashboard from '../pages/adminDashboard'
 
 import {
   Route,
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route index element={<Home />}></Route>
             <Route path="Menu" element={<Menu />} />
             <Route path='/about-us' element={<AboutUs />}></Route>
+                  <Route path='/admin-section' element={<AdminDashboard />}></Route>
           </Route>
         )
       )
