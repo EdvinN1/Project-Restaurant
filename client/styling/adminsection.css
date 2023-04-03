@@ -26,7 +26,7 @@
     'menu main main main right right'
     'menu main main main right right'
     'menu main main main right right';
-    grid-template-columns: 300px repeat(3, 1fr) 150px;
+    grid-template-columns: 20% repeat(3, 1fr) 20%;
     grid-template-rows: repeat(3, 1fr);
     gap: 5px;
     background-color: rgb(124, 141, 157);
