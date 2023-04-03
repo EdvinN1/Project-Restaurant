@@ -1,18 +1,11 @@
 
-#menu-header {
-    text-align: center;
-    color: black;
-}
 #menu-h1 {
     color: black;
 }
 .menu-nav {
     border-bottom: 1px solid #ccc;
     padding: 10px;
-}
-.menu-nav ul {
     list-style: none;
-    margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
@@ -20,7 +13,7 @@
     align-items: center; 
 }
 .menu-nav li {
-    margin: 0 10px;
+    margin: 0 5px;
 }
 .menu-main {
     padding: 20px;
@@ -60,6 +53,8 @@
 }
 .menupage-header-cards a{
 text-decoration: none;
+color: black;
+font-size: auto;
 }
 .menupage-cards:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -84,5 +79,12 @@ text-decoration: none;
 @media only screen and (max-width: 460px) {
 .menupage-header-cards {
     padding: 5px;
+}
+.menupage-header-cards a {
+    font-size: small;
+    color: black;
+}
+.menu-nav li {
+    margin: 0;
 }
 }

@@ -3,16 +3,11 @@ import "../styling/menuPage.css"
 export default function () {
     return (
         <section>
-            <header id="menu-header">
-		<h1 id="menu-h1">MENU</h1>
-	</header>
 	<nav className="menu-nav">
-		<ul className="filter-menu">
 			<li className="menupage-header-cards"><a href="#starters">Starters</a></li>
 			<li className="menupage-header-cards"><a href="#mains">Mains</a></li>
 			<li className="menupage-header-cards"><a href="#desserts">Desserts</a></li>
       		<li className="menupage-header-cards"><a href="#drinks">Drinks</a></li>
-		</ul>
 	</nav>
 	<main className="menu-main">
 		<div className="menupage-div" id="starters">
