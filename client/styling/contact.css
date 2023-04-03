@@ -1,0 +1,83 @@
+.section-contact {
+  height: 100vh;
+  padding-top: 75px;
+}
+
+.container-contact {
+  width: 80%;
+  margin: auto;
+}
+
+.container-contact p {
+  margin-bottom: 40px;
+  color: black;
+}
+
+.contact-box {
+  background: #ffffff;
+  display: flex;
+}
+
+.contact-left {
+  flex-basis: 60%;
+  padding: 40px 60px;
+}
+
+.contact-right {
+  flex-basis: 40%;
+  padding: 40px;
+  background: #1c00b5;
+  color: #ffffff;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.input-row .input-group {
+  flex-basis: 45%;
+}
+
+.input-contact {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  outline: none;
+  padding-bottom: 5px;
+}
+
+textarea {
+  width: 100%;
+  border: 1px solid #cccccc;
+  outline: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.submit-contact {
+  background-color: #1c00b5;
+  width: 100px;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  height: 35px;
+  border-radius: 30px;
+  margin-top: 20px;
+  box-shadow: 0px 5px 15px 0px rgba(28, 0, 181, 0.3);
+}
+
+.submit-contact:hover {
+  scale: 1.1;
+  cursor: pointer;
+  transition: ease-in 0.3s;
+}
+
+tr td:first-child {
+  padding-right: 20px;
+}
+
+tr td {
+  padding-top: 20px;
+}
