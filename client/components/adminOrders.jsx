@@ -1,12 +1,12 @@
-export default function({order}){
+export default function(){
 
 
-fetch('http://localhost:3000/orders')
+/* fetch('http://localhost:3000/orders')
 .then(response => response.json())
 .then(data => console.log(data))
-.catch(error => console.error(error))
-
-/* const data ={ orderId: "123", orderDate: "230403", restaurantID: 1};
+.catch(error => console.error(error)) */
+let number = Math.floor(Math.random() * 100 + 1);
+const data ={ orderId: "123", orderDate: "230403", restaurantID: number};
 fetch('http://localhost:3000/orders',{
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -20,22 +20,11 @@ fetch('http://localhost:3000/orders',{
   })
   .catch(error => {
     console.error('There was a problem creating the restaurant:', error);
-  }); */
-
-
-
-/*   fetch('http://localhost:3000/orders', {
-    method: 'DELETE'
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error(error)); */
-
-
+  });
 
 return (
     <div>
-        {order}
+        {"order"}
     </div>
 )
 }

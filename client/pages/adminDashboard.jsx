@@ -1,19 +1,27 @@
-import CategoryFromDatabase from "../components/categoryFromDatabase"
-import OrdersFromDatabase from "../components/ordersFromDatabase";
 import "../styling/adminsection.css"
 import { useState } from "react";
+import AdminUsers from "../components/adminUsers";
+import AdminStarters from "../components/adminStarters";
+import AdminEntree from "../components/adminEntree";
+import AdminDesserts from "../components/adminDesserts";
+import AdminOrders from "../components/adminOrders";
+import AdminSettings from "../components/adminSettings";
 
 
 export default function(){
-    const [category, setCategory] = useState("");
-    const [order, setOrder] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState("");
+
+    const categoryComponents = {
+        "Users": <AdminUsers category="Users" />,
+        "Starters": <AdminStarters category="Starters" />,
+        "Entrée": <AdminEntree category="Entrée" />,
+        "Desserts": <AdminDesserts category="Desserts" />,
+        "Orders": <AdminOrders category="Orders" />,
+        "Settings": <AdminSettings category="Settings"/>
+    }
 
     function handleCategoryClick(categoryName) {
-        setCategory(categoryName);
-      }
-
-    function handleOrderClick(orderName) {
-        setOrder(orderName);
+        setSelectedCategory(categoryName);
       }
 
     return(
@@ -25,15 +33,15 @@ export default function(){
                         <li><button className="adminBtn" onClick={() => handleCategoryClick("Starters")}>Starters</button></li>
                         <li><button className="adminBtn" onClick={() => handleCategoryClick("Entrée")}>Entrée</button></li>
                         <li><button className="adminBtn" onClick={() => handleCategoryClick("Desserts")}>Desserts</button></li>
-                        <li><button className="adminBtn" onClick={() => handleOrderClick("Orders")}>Orders</button></li>
+                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Orders")}>Orders</button></li>
                         <li><button className="adminBtn" onClick={() => handleCategoryClick("Settings")}>Settings</button></li>
                     </ul>
                 </div>
                 <div className="item2">
-                <CategoryFromDatabase category={category} />
+                {categoryComponents[selectedCategory]}
                 </div>
                 <div className="item3">
-                <OrdersFromDatabase order={order}/>
+                Some info here
                 </div>
             </div>
         </section>
