@@ -15,7 +15,7 @@ h1{
     font-size: 40px;
     text-align: center;
     color:azure;
-    padding-top: 4rem;
+    padding-top: 1rem;
 }
 
 .btn{
@@ -36,10 +36,8 @@ h1{
     -webkit-user-select: none;
     touch-action: manipulation;
     width: 200px;
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    margin-top: 470px;
 }
 
 .paragraph{
@@ -111,17 +109,11 @@ h1{
     .imgContainer{
         height: 250px;
     }
-    .btn{
-        font-size: 14px;
-    }
 }
 
 @media (max-width: 600px) {
     .slide1, .slide2, .slide3, .slide4, .slide5{
         height: 250px;
-    }
-    .btn{
-        top: 85%;
     }
 }
 
@@ -134,8 +126,5 @@ h1{
 @media (max-width: 480px) and (min-height: 670px){
     .slide1, .slide2, .slide3, .slide4, .slide5{
         height: 200px;
-    }
-    .btn{
-        top: 70%;
     }
 }
