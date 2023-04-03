@@ -12,10 +12,10 @@ const createAccountSchema = new Schema({
 
 mongoose.model('createAccounts', createAccountSchema)
 
-// createAccountRouter.get('/', async (request, response)=>{
-//     const createAccount = await mongoose.models.createAccount.find()
-//     response.json(createAccount)
-// })
+createAccountRouter.get('/', async (request, response)=>{
+    const createAccount = await mongoose.models.createAccounts.find()
+    response.json(createAccount)
+})
 
 createAccountRouter.post('/', async (request, response)=>{
     const createAccount = new mongoose.models.createAccounts()
