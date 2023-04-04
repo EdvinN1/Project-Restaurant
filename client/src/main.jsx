@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import Menu from "../pages/menuPage";
-import Home from "../pages/homePage.jsx";
-import AboutUs from "../pages/aboutUsPage";
-import AdminDashboard from "../pages/adminDashboard";
-import Contact from "../pages/contactPage";
-import CreateAccount from "../pages/createAccountPage";
-import Login from "../pages/loginPage";
+import Menu from "./pages/menuPage";
+import Home from "./pages/homePage.jsx";
+import AboutUs from "./pages/aboutUsPage";
+import AdminDashboard from "./pages/adminDashboard";
+import Contact from "./pages/contactPage";
+import CreateAccount from "./pages/createAccountPage";
+import Login from "./pages/loginPage";
 
 import {
   Route,
