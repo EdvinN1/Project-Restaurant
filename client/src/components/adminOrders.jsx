@@ -1,14 +1,9 @@
 export default function(){
-
-
-/* fetch('http://localhost:3000/orders')
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error(error)) */
 let number = Math.floor(Math.random() * 100 + 1);
+let numberID = Math.floor(Math.random() * 100 + 1);
 let numberDate = Math.floor(Math.random() * 31 + 1);
-const data ={ orderId: "123", orderDate: numberDate, restaurantID: number};
-fetch('http://localhost:3000/orders',{
+const data ={ orderID: numberID, orderDate: numberDate, restaurantID: number};
+fetch('http://localhost:3000/api/admin',{
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),

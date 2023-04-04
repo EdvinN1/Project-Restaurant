@@ -1,5 +1,5 @@
 export default function(){
-    fetch('http://localhost:3000/orders', {
+    fetch('http://localhost:3000/api/admin', {
     method: 'DELETE'
     })
     .then(response => response.json())
