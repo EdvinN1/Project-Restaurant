@@ -3,13 +3,13 @@ const adminRouter = Router()
 import mongoose, { Schema } from 'mongoose'
 
 
-  adminRouter.use(Router.json())
+/*   adminRouter.use(Router.json())
   adminRouter.use((request, response, next) => {
       response.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
       response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
       response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
       next();
-    });
+    }); */
 
 const ordersSchema = new Schema({
     orderID: Number,
