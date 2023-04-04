@@ -2,14 +2,8 @@ import express, { response } from 'express'
 const api = express()
 
 api.use(express.json())
-api.use((request, response, next) => {
-    response.setHeader('Access-Control-Allow-Origin', '*');
-    response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-  });
 
-import mongoose, { Schema } from 'mongoose'
+import mongoose from 'mongoose'
 const conn = "mongodb+srv://projekt:12345@cluster.oduwork.mongodb.net/test"
 
 api.listen(3000, () => {
@@ -20,35 +14,9 @@ api.listen(3000, () => {
       })
 })
 
-const ordersSchema = new Schema({
-    orderID: String,
-    orderDate: Number,
-    restaurantID: Number
-})
-
-if(!mongoose.models.orders){
-    mongoose.model('orders', ordersSchema)
-}
-
-api.post('/orders', async(request, response) => {
-    const order = new mongoose.models.orders();
-    order.orderID = request.body.orderID
-    order.orderDate = request.body.orderDate
-    order.restaurantID = request.body.restaurantID
-    await order.save()
-    response.sendStatus(201)
-})
-
-api.get('/orders', async (request, response) => {
-    const order = await mongoose.models.orders.find();
-    response.json(order);
-})
-
-api.delete('/orders', async (request, response) => {
-    const deleteAll = await mongoose.models.orders.deleteMany({});
-    response.json(deleteAll);
-})
-
 api.get('/', async (request, response) => {
     response.json({"result": "created"})
 })
+
+import adminRouter from './routes/adminRoute.js';
+api.use('/api/admin', adminRouter)
