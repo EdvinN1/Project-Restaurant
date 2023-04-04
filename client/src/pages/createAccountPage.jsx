@@ -2,7 +2,7 @@ import React from "react";
 import '../styling/account.css'
 import { validateInputs } from "../components/validateInputs";
 import { Link } from "react-router-dom";
-import {useStates, useFetch} from 'react-easier';
+import { useStates } from 'react-easier';
 
 export default function () {
 
@@ -20,7 +20,7 @@ export default function () {
         }
       };
 
-    const account = useStates('account', {
+      const account = useStates('account', {
         'name':'', 
         'email':'', 
         'password':''

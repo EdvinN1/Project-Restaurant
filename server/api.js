@@ -31,13 +31,6 @@ api.listen(3000, () => {
       })
 })
 
-
-api.get('/', async (request, response) => {
-
-    response.json({"result": "created"})
-
-})
-
 //routes
 import accountRouter from './routes/accountRoute.js'
 api.use('/api/accounts', accountRouter)
