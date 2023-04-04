@@ -14,10 +14,11 @@ useEffect(() => {
         <div>
             <h4>current orders</h4>
             {orders.map(order => (
-                <div key={order.orderId}>
-                <p>orderID: {order.restaurantID}</p>
-                <p>restaurantID: {order.orderDate}</p>
-                <br />
+                <div>
+                    <p>orderID: {order.restaurantID}</p>
+                    <p>restaurantID: {order.orderDate}</p>
+                    <button className="adminBtn">accept</button>
+                    <button className="adminBtn">decline</button>
                 </div>
             ))}
         </div>
