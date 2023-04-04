@@ -8,7 +8,7 @@ import AdminDashboard from "./pages/adminDashboard";
 import Contact from "./pages/contactPage";
 import CreateAccount from "./pages/createAccountPage";
 import Login from "./pages/loginPage";
-import ShoppingCart from "../pages/shoppingCartPage"
+import ShoppingCart from "./pages/shoppingCartPage"
 
 import {
     Route,
