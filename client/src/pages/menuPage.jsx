@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styling/menuPage.css";
-import { meals } from "../src/food.js";
+import '../styling/menuPage.css'
+import { meals } from '../food.js'
 
 export default function () {
   return (
