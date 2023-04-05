@@ -1,14 +1,51 @@
-import CategoryFromDatabase from "../components/categoryFromDatabase"
 import "../styling/adminsection.css"
 import { useState } from "react";
+import AdminUsers from "../components/adminUsers";
+import AdminStarters from "../components/adminStarters";
+import AdminEntree from "../components/adminEntree";
+import AdminDesserts from "../components/adminDesserts";
+import AdminOrders from "../components/adminOrders";
+import AdminSettings from "../components/adminSettings";
 
 
 export default function(){
-    const [category, setCategory] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState("");
+    const [acceptedOrders, setAcceptedOrders] = useState([]);
+
+    //all the components
+    const categoryComponents = {
+        "Users": <AdminUsers category="Users" />,
+        "Starters": <AdminStarters category="Starters" />,
+        "Entrée": <AdminEntree category="Entrée" />,
+        "Desserts": <AdminDesserts category="Desserts" />,
+        "Orders": <AdminOrders category="Orders" />,
+        "Settings": <AdminSettings category="Settings" updateAcceptedOrders={updateAcceptedOrders} acceptedOrders={acceptedOrders}/>
+    }
+
+    function updateAcceptedOrders(order) {
+        setAcceptedOrders(prevAcceptedOrders => [...prevAcceptedOrders, order]);
+      }
 
     function handleCategoryClick(categoryName) {
-        setCategory(categoryName);
+        setSelectedCategory(categoryName);
       }
+
+    //handle ready button, right now just deletes the order, maybe change it later
+    function handleReadyClick(inData){
+        console.log("delete");
+        fetch(`http://localhost:3000/api/admin/orders?orderID=${inData}`, {
+            method: 'DELETE'
+        })
+        //to update the state and filter out inDate
+        .then(response => {
+            if(response.ok) {
+                setAcceptedOrders(acceptedOrders.filter(acceptedOrders => acceptedOrders.orderID !== inData))
+            } else {
+                console.error('Response not ok')
+            }
+        })
+        .catch(error => console.error(error));
+    }
 
     return(
         <section className="adminWrapper">
@@ -18,14 +55,25 @@ export default function(){
                         <li><button className="adminBtn" onClick={() => handleCategoryClick("Users")}>Users</button></li>
                         <li><button className="adminBtn" onClick={() => handleCategoryClick("Starters")}>Starters</button></li>
                         <li><button className="adminBtn" onClick={() => handleCategoryClick("Entrée")}>Entrée</button></li>
-                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Desserts")}>Desserts</button></li>
-                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Settings")}>Settings</button></li>
+                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Desserts")}>Desserts/DeleteAll</button></li>
+                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Orders")}>Orders/generateOrders</button></li>
+                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Settings")}>current orders</button></li>
                     </ul>
                 </div>
                 <div className="item2">
-                <CategoryFromDatabase category={category} />
+                {categoryComponents[selectedCategory]}
                 </div>
-                <div className="item3">Display more things?</div>
+                <div className="item3">
+                Some info here
+                {acceptedOrders.map(order => (
+                <div>
+                    <p>orderID: {order.orderID}</p>
+                    <p>restaurantID: {order.restaurantID}</p>
+                    <p>orderDate: {order.orderDate}</p>
+                    <button className="adminBtn" onClick={() => handleReadyClick(order.orderID)}>Ready</button>
+                    </div>
+                ))}
+                </div>
             </div>
         </section>
     )
