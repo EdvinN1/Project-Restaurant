@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useStates } from 'react-easier';
 
 export const GlobalContext = createContext({
   loggedIn: false,
@@ -14,6 +15,8 @@ export const GlobalProvider = ({ children }) => {
   const updateLoggedIn = (loggedIn) => {
     setLoggedIn(loggedIn);
   };
+
+  const access = useStates("access");
 
   const handleLogin = () => {
     navigate("/login")
@@ -38,7 +41,8 @@ export const GlobalProvider = ({ children }) => {
         updateLoggedIn, 
         navigate,
         handleLogin,
-        handleLogout 
+        handleLogout,
+        access 
         }}>
       {children}
     </GlobalContext.Provider>

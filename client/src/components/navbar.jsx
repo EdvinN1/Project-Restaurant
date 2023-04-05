@@ -6,9 +6,7 @@ import { GlobalContext } from "../GlobalContext";
 
 export default function Navbar() {
   const navRef = useRef();
-  const access = useStates("access");
-  const { handleLogin, handleLogout } = useContext(GlobalContext);
-  const navigate = useNavigate();
+  const { handleLogin, handleLogout, access } = useContext(GlobalContext);
 
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
