@@ -1,15 +1,9 @@
 import Router from "express";
+import cors from "cors";
 const adminRouter = Router()
 import mongoose, { Schema } from 'mongoose'
 
-
-/*   adminRouter.use(Router.json())
-  adminRouter.use((request, response, next) => {
-      response.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-      response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-      response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-      next();
-    }); */
+adminRouter.use(cors());
 
 const ordersSchema = new Schema({
     orderID: Number,
@@ -38,6 +32,12 @@ adminRouter.get('/', async (request, response) => {
 adminRouter.delete('/', async (request, response) => {
     const deleteAll = await mongoose.models.orders.deleteMany({});
     response.json(deleteAll);
+})
+
+adminRouter.delete('/:id', async (request, response) => {
+    const orderID = request.query.orderID;
+    const deleteOrder = await mongoose.models.orders.deleteOne({orderID});
+    response.json(deleteOrder);
 })
 
 export default adminRouter
