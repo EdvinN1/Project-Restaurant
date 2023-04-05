@@ -12,6 +12,7 @@ export default function(){
     const [selectedCategory, setSelectedCategory] = useState("");
     const [acceptedOrders, setAcceptedOrders] = useState([]);
 
+    //all the components
     const categoryComponents = {
         "Users": <AdminUsers category="Users" />,
         "Starters": <AdminStarters category="Starters" />,
@@ -29,7 +30,8 @@ export default function(){
         setSelectedCategory(categoryName);
       }
 
-      function handleReadyClick(inData){
+    //handle ready button, right now just deletes the order, maybe change it later
+    function handleReadyClick(inData){
         console.log("delete");
         fetch(`http://localhost:3000/api/admin/orders?orderID=${inData}`, {
             method: 'DELETE'
@@ -53,8 +55,8 @@ export default function(){
                         <li><button className="adminBtn" onClick={() => handleCategoryClick("Users")}>Users</button></li>
                         <li><button className="adminBtn" onClick={() => handleCategoryClick("Starters")}>Starters</button></li>
                         <li><button className="adminBtn" onClick={() => handleCategoryClick("Entrée")}>Entrée</button></li>
-                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Desserts")}>Desserts</button></li>
-                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Orders")}>Orders</button></li>
+                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Desserts")}>Desserts/DeleteAll</button></li>
+                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Orders")}>Orders/generateOrders</button></li>
                         <li><button className="adminBtn" onClick={() => handleCategoryClick("Settings")}>current orders</button></li>
                     </ul>
                 </div>
@@ -65,7 +67,6 @@ export default function(){
                 Some info here
                 {acceptedOrders.map(order => (
                 <div>
-                {/* {console.log("orderID: " + order.orderID)} */}
                     <p>orderID: {order.orderID}</p>
                     <p>restaurantID: {order.restaurantID}</p>
                     <p>orderDate: {order.orderDate}</p>

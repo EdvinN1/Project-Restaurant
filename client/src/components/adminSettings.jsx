@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 
 export default function(props){
 const [orders, setOrders] = useState([]);
-/* const [acceptedOrders, setAcceptedOrders] = useState(props.acceptedOrders); */
-/* const [aOrders, setAOrders] = useState([]); */
 
 //get all orders
 useEffect(() => {
@@ -13,25 +11,23 @@ useEffect(() => {
         .catch(error => console.error(error))
 }, []);
 
+//accept button action
 function handleAcceptClick(inData){
-    // Find the index of the item with the matching ID
+    // find the index of the item with the matching ID
     const index = orders.findIndex(item => item.orderID === inData);
-    
     if (index >= 0) {
-      // Remove the item from the source list using splice()
+      // Remove the item from the source list using splice() and save it in removedItem
       const [removedItem] = orders.splice(index, 1);
-      console.log("id: " + removedItem.orderID);
-      /* const updatedAcceptedOrders = [...props.acceptedOrders, removedItem]; */
+
+      //use function updateAcceptedOrders, send in the item that was removed
       props.updateAcceptedOrders(removedItem);
-      /* console.log("orderID: " + props.acceptedOrders[0].orderID); */
-      // Add the removed item to the target list using concat()
-     /*  props.updateAcceptedOrders([...props.acceptedOrders, removedItem]); */
         
-      // Update the source list with the modified array
-      setOrders([...orders]);
+      // Update the source list with the modified array, not sure if this is needed, keep for now
+      /* setOrders([...orders]); */
     }
   };
 
+  //delete button action
 function handleDeclineClick(inData){
     console.log("delete");
     fetch(`http://localhost:3000/api/admin/orders?orderID=${inData}`, {
@@ -50,7 +46,6 @@ function handleDeclineClick(inData){
     return (
         <div>
             <h4>current orders</h4>
-            <div>
                 {orders.map(order => (
                     <div>
                         <p>orderID: {order.orderID}</p>
@@ -60,10 +55,6 @@ function handleDeclineClick(inData){
                         <button className="adminBtn" onClick={() => handleDeclineClick(order.orderID)}>decline</button>
                     </div>
                 ))}
-            </div>
-            <div>
-                testar hejsan
-            </div>
         </div>
     )
 }
