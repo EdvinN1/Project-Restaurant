@@ -1,7 +1,13 @@
-import express from 'express'
+import express, { response } from 'express'
 const api = express()
 
 api.use(express.json())
+api.use((request, response, next) => {
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+  });
 
 // sessions
 
@@ -37,3 +43,6 @@ api.use('/api/accounts', accountRouter)
 
 import loginRouter from './routes/loginRoute.js'
 api.use('/api/login', loginRouter)
+
+import adminRouter from './routes/adminRoute.js';
+api.use('/api/admin', adminRouter)
