@@ -1,6 +1,5 @@
 import { useRef, useContext } from "react";
-import { useStates } from "react-easier";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styling/navbar.css";
 import { GlobalContext } from "../GlobalContext";
 
@@ -22,7 +21,7 @@ export default function Navbar() {
         <Link className={"link-buttons"} to="/">
           Home
         </Link>
-        <Link className={"link-buttons"} to="/Menu">
+        <Link className={"link-buttons"} to="/menu">
           Menu
         </Link>
         <Link className={"link-buttons"} to="/contact">
