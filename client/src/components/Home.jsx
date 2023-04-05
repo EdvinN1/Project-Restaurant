@@ -1,7 +1,7 @@
 import "../styling/home.css"
 
-export default function(){
-    return(
+export default function () {
+    return (
         <section className="wrapper">
             <h1>KYOTO HUT</h1>
             <p className="paragraph">We mix the best of two worlds, pizza and sushi!</p>
