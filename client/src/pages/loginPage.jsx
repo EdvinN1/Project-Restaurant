@@ -1,9 +1,13 @@
-import React from 'react';
-import { Link } from "react-router-dom"
+import React, { useContext } from 'react';
+import { Link, useNavigate } from "react-router-dom"
 import '../styling/account.css'
 import { useStates } from 'react-easier';
+import { GlobalContext } from '../GlobalContext';
 
 export default function () {
+
+    const { updateLoggedIn } = useContext(GlobalContext);
+    const navigate = useNavigate();
 
     const submit = async (e) => {
         e.preventDefault();
@@ -13,12 +17,18 @@ export default function () {
             body: JSON.stringify(login)
           });
           let response = await rawResponse.json();
+          updateLoggedIn(true);
           access.admin = response.admin;
           access.loggedIn = response.loggedIn
           console.log(response)
     };
 
     const access = useStates("access")
+
+    if (access.loggedIn) {
+        navigate('/');
+        return null;
+      }
 
     const login = useStates('login', {
         'name':'', 
