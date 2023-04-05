@@ -1,38 +1,24 @@
-import { useState, useRef, useContext } from "react";
+import { useRef, useContext } from "react";
 import { useStates } from "react-easier";
 import { Link, useNavigate } from "react-router-dom";
 import "../styling/navbar.css";
-import { GlobalContext } from '../GlobalContext';
+import { GlobalContext } from "../GlobalContext";
 
 export default function Navbar() {
   const navRef = useRef();
-  const access = useStates("access")
-  const navigate = useNavigate()
-  const { updateLoggedIn } = useContext(GlobalContext);
+  const access = useStates("access");
+  const { handleLogin, handleLogout } = useContext(GlobalContext);
+  const navigate = useNavigate();
 
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
 
-  const handleLogin = () => {
-    navigate("/login")
-    updateLoggedIn(true);
-  };
-
-  const handleLogout = async () => {
-    const rawResponse = await fetch('/api/login', {
-      method: 'DELETE'
-    });
-    const response = await rawResponse.json();
-    updateLoggedIn(false);
-    access.admin = false;
-    access.loggedIn = false;
-    console.log(response);
-  };
-
   return (
     <header className={"navbar-header"}>
-      <Link to="/"><h3>KYOTO HUT</h3></Link>
+      <Link to="/">
+        <h3>KYOTO HUT</h3>
+      </Link>
 
       <nav className={"navbar-nav"} ref={navRef}>
         <Link className={"link-buttons"} to="/">
