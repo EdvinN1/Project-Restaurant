@@ -37,3 +37,6 @@ api.use('/api/accounts', accountRouter)
 
 import loginRouter from './routes/loginRoute.js'
 api.use('/api/login', loginRouter)
+
+import foodItemsRouter from './routes/foodItemsRoute.js'
+api.use('/api/fooditems', foodItemsRouter)
