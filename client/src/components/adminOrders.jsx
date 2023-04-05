@@ -4,7 +4,7 @@ export default function(){
   let number = Math.floor(Math.random() * 100 + 1);
   let numberID = Math.floor(Math.random() * 100 + 1);
   let numberDate = Math.floor(Math.random() * 31 + 1);
-  const data ={ orderID: numberID, orderDate: numberDate, restaurantID: number};
+  const data = { orderID: numberID, orderDate: numberDate, restaurantID: number};
   fetch('http://localhost:3000/api/admin',{
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

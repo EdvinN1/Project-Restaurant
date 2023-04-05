@@ -6,7 +6,8 @@ import AdminEntree from "../components/adminEntree";
 import AdminDesserts from "../components/adminDesserts";
 import AdminOrders from "../components/adminOrders";
 import AdminSettings from "../components/adminSettings";
-
+import AdminDeleteAllOrders from "../components/adminDeleteAllOrders";
+import AdminCurrentOrders from "../components/adminCurrentOrders";
 
 export default function(){
     const [selectedCategory, setSelectedCategory] = useState("");
@@ -18,8 +19,10 @@ export default function(){
         "Starters": <AdminStarters category="Starters" />,
         "Entrée": <AdminEntree category="Entrée" />,
         "Desserts": <AdminDesserts category="Desserts" />,
+        "DeleteAllOrders": <AdminDeleteAllOrders category="DeleteAllOrders" />,
         "Orders": <AdminOrders category="Orders" />,
-        "Settings": <AdminSettings category="Settings" updateAcceptedOrders={updateAcceptedOrders} acceptedOrders={acceptedOrders}/>
+        "CurrentOrders": <AdminCurrentOrders category="CurrentOrders" updateAcceptedOrders={updateAcceptedOrders} acceptedOrders={acceptedOrders}/>,
+        "Settings": <AdminSettings category="Settings" />
     }
 
     function updateAcceptedOrders(order) {
@@ -27,6 +30,7 @@ export default function(){
       }
 
     function handleCategoryClick(categoryName) {
+        console.log("acceptedOrderslength: " + acceptedOrders.length);
         setSelectedCategory(categoryName);
       }
 
@@ -52,12 +56,14 @@ export default function(){
             <div className="adminGridContainer">
                 <div className="item1">AdminDashboard
                     <ul>
-                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Users")}>Users</button></li>
+                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Users")}>Users</button></li><br></br>
                         <li><button className="adminBtn" onClick={() => handleCategoryClick("Starters")}>Starters</button></li>
                         <li><button className="adminBtn" onClick={() => handleCategoryClick("Entrée")}>Entrée</button></li>
-                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Desserts")}>Desserts/DeleteAll</button></li>
-                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Orders")}>Orders/generateOrders</button></li>
-                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Settings")}>Settings/current orders</button></li>
+                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Desserts")}>Desserts</button></li><br></br>
+                        <li><button className="adminBtn" onClick={() => handleCategoryClick("DeleteAllOrders")}>DeleteAllOrders</button></li>
+                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Orders")}>generateOrders</button></li>
+                        <li><button className="adminBtn" onClick={() => handleCategoryClick("CurrentOrders")}>currentOrders</button></li><br></br>
+                        <li><button className="adminBtn" onClick={() => handleCategoryClick("Settings")}>Settings</button></li>
                     </ul>
                 </div>
                 <div className="item2">

@@ -34,10 +34,16 @@ adminRouter.delete('/', async (request, response) => {
     response.json(deleteAll);
 })
 
-adminRouter.delete('/:id', async (request, response) => {
+/* adminRouter.delete('/:id', async (request, response) => {
     const orderID = request.query.orderID;
     const deleteOrder = await mongoose.models.orders.deleteOne({orderID});
     response.json(deleteOrder);
+}) */
+
+adminRouter.delete('/orders', async (request, response) => {
+    const orderToDelete = request.body;
+    const deleteResult  = await mongoose.models.orders.deleteOne({_id: orderToDelete._id });
+    response.json(deleteResult);
 })
 
 export default adminRouter
