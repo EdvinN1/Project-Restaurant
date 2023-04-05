@@ -15,6 +15,7 @@
 }
 
 .navbar-header {
+    cursor: pointer;
     position: sticky;
     top: 0;
     display: flex;
@@ -28,10 +29,27 @@
     z-index: 2;
 }
 
+.navbar-header a{
+    color: var(--textColor);
+    text-decoration: none;
+}
+
 .navbar-nav .link-buttons {
     margin: 0 1rem;
     color: var(--textColor);
     text-decoration: none;
+}
+
+.account-button {
+    cursor: pointer;
+    border: 0;
+    border-radius: 4px;
+    font-weight: 500;
+    margin: 0 10px;
+    width: 50px;
+    padding: 2px;
+    box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+    transition: 0.4s;
 }
 
 .navbar-nav .link-buttons:hover {

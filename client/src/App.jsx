@@ -2,6 +2,7 @@ import Navbar from './components/navbar'
 import {Outlet} from 'react-router-dom';
 import Footer from './components/footer.jsx';
 import { useStates } from 'react-easier';
+import { GlobalProvider } from './GlobalContext';
 
 function App() {
     useStates("access", {
@@ -9,11 +10,11 @@ function App() {
         loggedIn: false
     })
     return (
-        <>
+        <GlobalProvider>
             <Navbar/>
             <Outlet/>
             <Footer/>
-        </>
+        </GlobalProvider>
     )
 }
 

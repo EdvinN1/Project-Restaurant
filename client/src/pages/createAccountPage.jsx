@@ -1,10 +1,12 @@
 import React from "react";
 import '../styling/account.css'
 import { validateInputs } from "../components/validateInputs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useStates } from 'react-easier';
 
 export default function () {
+
+    const navigate = useNavigate()
 
     const submit = async (e) => {
         e.preventDefault();
@@ -18,7 +20,16 @@ export default function () {
           let response = await rawResponse.json();
           console.log(response)
         }
+
+        navigate("/login")
       };
+
+      const access = useStates("access")
+
+      if (access.loggedIn) {
+          navigate('/');
+          return null;
+        } 
 
       const account = useStates('account', {
         'name':'', 
