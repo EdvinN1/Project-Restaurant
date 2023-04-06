@@ -6,6 +6,9 @@ import mongoose, {Schema} from 'mongoose'
 import crypto from 'crypto'
 const salt = "paraplane".toString('hex')
 
+import cors from "cors";
+accountRouter.use(cors());
+
 function getHash(password){ // utility
     let hash = crypto.pbkdf2Sync(password, salt, 1000, 64, `sha512`).toString(`hex`)
     return hash
@@ -31,6 +34,12 @@ accountRouter.delete('/:id', async (request, response)=>{
     await mongoose.models.accounts.findByIdAndDelete(request.params.id)
     const result = await mongoose.models.accounts.findById(request.params.id)
     response.json({"deleted": (result===null)})
+})
+
+accountRouter.delete('/', async (request, response) => {
+    const accountToDelete = request.body;
+    const deleteResult  = await mongoose.models.accounts.deleteOne({_id: accountToDelete._id });
+    response.json(deleteResult);
 })
 
 //create accounts
