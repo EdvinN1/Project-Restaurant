@@ -14,7 +14,7 @@ function getHash(password){ // utility
 
 loginRouter.post('/', async (request, response)=>{
     let account = await mongoose.models.accounts.findOne({
-        email: request.body.email,
+        name: request.body.name,
         password: getHash(request.body.password) // encrypt the entered password
     })
 
@@ -34,14 +34,13 @@ loginRouter.get('/', async (request, response)=>{
     if(request.session?.account){
         // first, always, check with database
         let account = await mongoose.models.accounts.findOne({
-            email: request.session.account.email,
+            name: request.session.account.name,
             password: getHash(request.session.account.password)
         })
         // respond
         if(account){            
             response.json({
                 name: request.session.account.name,
-                email: request.session.account.password,
                 loggedIn: true
             })
             return

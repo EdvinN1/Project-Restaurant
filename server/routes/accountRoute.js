@@ -15,7 +15,7 @@ function getHash(password){ // utility
 }
 
 const accountSchema = new Schema({
-    name: String,
+    name: {type: String, unique: true},
     email: String,
     password: String,
     admin: {type:Boolean, default:false}
