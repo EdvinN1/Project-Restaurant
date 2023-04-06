@@ -18,7 +18,7 @@ const accountSchema = new Schema({
     name: String,
     email: String,
     password: String,
-    admin: {type:Boolean, default:true}
+    admin: {type:Boolean, default:false}
 })
 
 mongoose.model('accounts', accountSchema)
