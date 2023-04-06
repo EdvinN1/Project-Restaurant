@@ -18,7 +18,7 @@ const accountSchema = new Schema({
     name: String,
     email: String,
     password: String,
-    admin: {type:Boolean, default:false}
+    admin: {type:Boolean, default:true}
 })
 
 mongoose.model('accounts', accountSchema)
@@ -40,6 +40,18 @@ accountRouter.delete('/', async (request, response) => {
     const accountToDelete = request.body;
     const deleteResult  = await mongoose.models.accounts.deleteOne({_id: accountToDelete._id });
     response.json(deleteResult);
+})
+
+accountRouter.patch('/', async (request, response) => {
+    const accountToModify = request.body;
+    let adminToggle = request.body.admin;
+    adminToggle = !adminToggle;
+    const modifiedResult = await mongoose.models.accounts.findOneAndUpdate(
+        {_id: accountToModify._id},
+        { admin: adminToggle },
+        { new: true }
+        );
+    response.json(modifiedResult);
 })
 
 //create accounts
