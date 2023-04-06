@@ -6,9 +6,6 @@ import mongoose, {Schema} from 'mongoose'
 import crypto from 'crypto'
 const salt = "paraplane".toString('hex')
 
-import cors from "cors";
-accountRouter.use(cors());
-
 function getHash(password){ // utility
     let hash = crypto.pbkdf2Sync(password, salt, 1000, 64, `sha512`).toString(`hex`)
     return hash
@@ -40,6 +37,19 @@ accountRouter.delete('/', async (request, response) => {
     const accountToDelete = request.body;
     const deleteResult  = await mongoose.models.accounts.deleteOne({_id: accountToDelete._id });
     response.json(deleteResult);
+})
+
+//patch, toggle admin rights
+accountRouter.patch('/', async (request, response) => {
+    const accountToModify = request.body;
+    let adminToggle = request.body.admin;
+    adminToggle = !adminToggle;
+    const modifiedResult = await mongoose.models.accounts.findOneAndUpdate(
+        {_id: accountToModify._id},
+        { admin: adminToggle },
+        { new: true }
+        );
+    response.json(modifiedResult);
 })
 
 //create accounts

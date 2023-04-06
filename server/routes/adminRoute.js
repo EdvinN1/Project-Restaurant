@@ -1,14 +1,13 @@
 import Router from "express";
-import cors from "cors";
 const adminRouter = Router()
 import mongoose, { Schema } from 'mongoose'
 
-adminRouter.use(cors());
 
 const ordersSchema = new Schema({
     orderID: Number,
     orderDate: Number,
-    restaurantID: Number
+    restaurantID: Number,
+    accepted: {type:Boolean, default:false}
 })
 
 if (!mongoose.models.orders) {
@@ -30,14 +29,30 @@ adminRouter.get('/', async (request, response) => {
 })
 
 adminRouter.delete('/', async (request, response) => {
-    const deleteAll = await mongoose.models.orders.deleteMany({});
-    response.json(deleteAll);
+    const deleteResult = await mongoose.models.orders.deleteMany({accepted: false});
+    response.json(deleteResult);
 })
 
-adminRouter.delete('/orders', async (request, response) => {
-    const orderToDelete = request.body;
-    const deleteResult = await mongoose.models.orders.deleteOne({ _id: orderToDelete._id });
+adminRouter.delete('/:id', async (request, response) => {
+    const orderId = request.params.id;
+    const deleteResult = await mongoose.models.orders.deleteOne({ _id: orderId });
     response.json(deleteResult);
+  });
+  
+
+adminRouter.patch('/:id', async (request, response) => {
+    try {
+        const orderId = request.params.id;
+        const modifiedResult = await mongoose.models.orders.findOneAndUpdate(
+          {_id: orderId},
+          { accepted: true },
+          { new: true }
+        );
+        response.json(modifiedResult);
+      } catch (error) {
+        console.error('Error:', error);
+        response.status(500).json({ message: 'Internal server error' });
+      }
 })
 
 export default adminRouter

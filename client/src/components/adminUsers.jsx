@@ -31,6 +31,28 @@ export default function () {
             .catch(error => console.error(error))
     }
 
+async function handleSetAdminClick(inData){
+    const response = await fetch('http://localhost:3000/api/accounts', {
+        method: 'PATCH',
+        body: JSON.stringify(inData),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    if (response.ok) {
+        const updatedUser = await response.json();
+        const updatedUsers = users.map(u => {
+            if (u._id === updatedUser._id) {
+                return updatedUser;
+            } else {
+                return u;
+            }
+        });
+        setUsers(updatedUsers);
+    }
+}
+
     return (
         <div>
             <h4>Users</h4>
@@ -38,8 +60,9 @@ export default function () {
                 <div>
                     <p>name: {user.name}</p>
                     <p>email: {user.email}</p>
-                    {/* <p>password: {user.password}</p> */}
+                    <p>admin: {user.admin ? 'true' : 'false'}</p>
                     <button className="adminBtn" onClick={() => handleDeleteClick(user)}>delete</button>
+                    <button className="adminBtn" onClick={() => handleSetAdminClick(user)}>toggle admin</button>
                     <br></br>
                 </div>
             ))}

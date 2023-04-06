@@ -50,6 +50,14 @@ export default function Navbar() {
             Logout
           </button>
         )}
+        {access.admin &&(
+          <Link to="/admin-section">
+            <button className={"account-button"} >
+            AdminDashboard
+          </button>
+          </Link>
+        )
+        }
         <button className="nav-btn" onClick={showNavbar}>
           <i className="material-icons hamburger-menu">menu</i>
         </button>

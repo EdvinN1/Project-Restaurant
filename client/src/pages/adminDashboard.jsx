@@ -1,5 +1,5 @@
 import "../styling/adminsection.css"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AdminUsers from "../components/adminUsers";
 import AdminStarters from "../components/adminStarters";
 import AdminEntree from "../components/adminEntree";
@@ -13,6 +13,14 @@ export default function () {
     const [selectedCategory, setSelectedCategory] = useState("");
     const [acceptedOrders, setAcceptedOrders] = useState([]);
 
+    //get all accepted orders
+    useEffect(() => {
+        fetch('http://localhost:3000/api/admin')
+            .then(response => response.json())
+            .then(data => { setAcceptedOrders(data); })
+            .catch(error => console.error(error))
+    }, []);
+
     //all the components
     const categoryComponents = {
         "Users": <AdminUsers category="Users" />,
@@ -21,12 +29,8 @@ export default function () {
         "Desserts": <AdminDesserts category="Desserts" />,
         "DeleteAllOrders": <AdminDeleteAllOrders category="DeleteAllOrders" />,
         "Orders": <AdminOrders category="Orders" />,
-        "CurrentOrders": <AdminCurrentOrders category="CurrentOrders" updateAcceptedOrders={updateAcceptedOrders} acceptedOrders={acceptedOrders} />,
+        "CurrentOrders": <AdminCurrentOrders category="CurrentOrders" setAcceptedOrders={setAcceptedOrders} acceptedOrders={acceptedOrders} />,
         "Settings": <AdminSettings category="Settings" />
-    }
-
-    function updateAcceptedOrders(order) {
-        setAcceptedOrders(prevAcceptedOrders => [...prevAcceptedOrders, order]);
     }
 
     function handleCategoryClick(categoryName) {
@@ -36,13 +40,16 @@ export default function () {
     //handle ready button, right now just deletes the order, maybe change it later
     function handleReadyClick(inData) {
         console.log("delete");
-        fetch(`http://localhost:3000/api/admin/orders?orderID=${inData}`, {
-            method: 'DELETE'
+        fetch(`http://localhost:3000/api/admin/${inData._id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
             //to update the state and filter out inDate
             .then(response => {
                 if (response.ok) {
-                    setAcceptedOrders(acceptedOrders.filter(acceptedOrders => acceptedOrders.orderID !== inData))
+                    setAcceptedOrders(acceptedOrders.filter(acceptedOrder => acceptedOrder._id !== inData._id))
                 } else {
                     console.error('Response not ok')
                 }
@@ -69,13 +76,13 @@ export default function () {
                     {categoryComponents[selectedCategory]}
                 </div>
                 <div className="item3">
-                    Accepted orders
-                    {acceptedOrders.map(order => (
+                    {acceptedOrders.filter(order => order.accepted).map(order => (
                         <div>
                             <p>orderID: {order.orderID}</p>
                             <p>restaurantID: {order.restaurantID}</p>
                             <p>orderDate: {order.orderDate}</p>
-                            <button className="adminBtn" onClick={() => handleReadyClick(order.orderID)}>Ready</button>
+                            <p>accepted: {order.accepted ? 'true' : 'false'}</p>
+                            <button className="adminBtn" onClick={() => handleReadyClick(order)}>Ready</button>
                         </div>
                     ))}
                 </div>
