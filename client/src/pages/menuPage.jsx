@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function () {
   const [menuItems, setMenuItems] = useState([]);
+  const [itemsToCart, setItemsToCart] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3000/api/fooditems")
@@ -13,6 +14,10 @@ export default function () {
       .catch((error) => console.error(error));
   }, []);
 
+  function handleButtonClick(id) {
+    setItemsToCart([...itemsToCart, id]);
+  }
+  console.log(itemsToCart);
   return (
     <section>
       <nav className="menu-nav">
@@ -40,7 +45,12 @@ export default function () {
                   <h3 className="menu-orders">{menuItem.name}</h3>
                   <p>{menuItem.info}</p>
                   <p>Price: {menuItem.price}</p>
-                  <button className="add-to-cart">Add to Cart</button>
+                  <button
+                    className="add-to-cart"
+                    onClick={() => handleButtonClick(menuItem)}
+                  >
+                    Add to Cart
+                  </button>
                   <button className="add-to-cart-copy">
                     <i className="material-icons">add</i>
                   </button>
@@ -58,7 +68,8 @@ export default function () {
                   <h3 className="menu-orders">{menuItem.name}</h3>
                   <p>{menuItem.info}</p>
                   <p>Price: {menuItem.price}</p>
-                  <button className="add-to-cart">Add to Cart</button>
+                  <button className="add-to-cart"
+                  onClick={() => handleButtonClick(menuItem)}>Add to Cart</button>
                   <button className="add-to-cart-copy">
                     <i className="material-icons">add</i>
                   </button>
