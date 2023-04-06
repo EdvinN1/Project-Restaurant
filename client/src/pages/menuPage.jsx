@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styling/menuPage.css";
 import { useEffect, useState } from "react";
+import { useStates } from "react-easier";
 
 export default function () {
   const [menuItems, setMenuItems] = useState([]);
-  const [itemsToCart, setItemsToCart] = useState([]);
+
+  const cart = useStates("cart");
 
   useEffect(() => {
     fetch("http://localhost:3000/api/fooditems")
@@ -13,11 +15,10 @@ export default function () {
       .then((data) => setMenuItems(data))
       .catch((error) => console.error(error));
   }, []);
-
-  function handleButtonClick(id) {
-    setItemsToCart([...itemsToCart, id]);
+  console.log(cart);
+  function handleButtonClick(item) {
+    cart.push(item);
   }
-  console.log(itemsToCart);
   return (
     <section>
       <nav className="menu-nav">
@@ -51,7 +52,10 @@ export default function () {
                   >
                     Add to Cart
                   </button>
-                  <button className="add-to-cart-copy">
+                  <button
+                    className="add-to-cart-copy"
+                    onClick={() => handleButtonClick(menuItem)}
+                  >
                     <i className="material-icons">add</i>
                   </button>
                 </li>
@@ -68,9 +72,16 @@ export default function () {
                   <h3 className="menu-orders">{menuItem.name}</h3>
                   <p>{menuItem.info}</p>
                   <p>Price: {menuItem.price}</p>
-                  <button className="add-to-cart"
-                  onClick={() => handleButtonClick(menuItem)}>Add to Cart</button>
-                  <button className="add-to-cart-copy">
+                  <button
+                    className="add-to-cart"
+                    onClick={() => handleButtonClick(menuItem)}
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    className="add-to-cart-copy"
+                    onClick={() => handleButtonClick(menuItem)}
+                  >
                     <i className="material-icons">add</i>
                   </button>
                 </li>
@@ -87,8 +98,16 @@ export default function () {
                   <h3 className="menu-orders">{menuItem.name}</h3>
                   <p>{menuItem.info}</p>
                   <p>Price: {menuItem.price}</p>
-                  <button className="add-to-cart">Add to Cart</button>
-                  <button className="add-to-cart-copy">
+                  <button
+                    className="add-to-cart"
+                    onClick={() => handleButtonClick(menuItem)}
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    className="add-to-cart-copy"
+                    onClick={() => handleButtonClick(menuItem)}
+                  >
                     <i className="material-icons">add</i>
                   </button>
                 </li>
@@ -105,8 +124,16 @@ export default function () {
                   <h3 className="menu-orders">{menuItem.name}</h3>
                   <p>{menuItem.info}</p>
                   <p>Price: {menuItem.price}</p>
-                  <button className="add-to-cart">Add to Cart</button>
-                  <button className="add-to-cart-copy">
+                  <button
+                    className="add-to-cart"
+                    onClick={() => handleButtonClick(menuItem)}
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    className="add-to-cart-copy"
+                    onClick={() => handleButtonClick(menuItem)}
+                  >
                     <i className="material-icons">add</i>
                   </button>
                 </li>

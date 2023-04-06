@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import "../styling/shopping-cart.css";
-import itemsToCart from "./menuPage";
+import { useStates } from "react-easier";
 
 export default function ({ items }) {
   const [newItem, setNewItem] = useState("");
+
+  const cart = useStates("cart");
+  
+  function handleRemoveItem(item) {
+    cart.splice(item)
+  }
 
   return (
     <section className="shopping-cart-page">
@@ -11,9 +17,10 @@ export default function ({ items }) {
       <h1 className="shopping-cart__title">Shopping Cart</h1>
       <section className={"shopping-cart-items"}>
         <ul className="shopping-cart__list">
-          {itemsToCart.map((menuItem) => (
-            <li key={index} className="shopping-cart__item">
-              {item} <p className={"price-per-item"}>Price: 200$</p>
+          {cart.map((menuItem) => (
+            <li key={menuItem.id} className="shopping-cart__item">
+              <p className={"price-per-item"}> {menuItem.name} </p>
+              <p className={"price-per-item"}>Price: {menuItem.price} </p>
               <input
                 className={"shopping-cart-input"}
                 defaultValue={1}
@@ -23,7 +30,7 @@ export default function ({ items }) {
               />
               <button
                 className={"shopping-cart__button"}
-                onClick={() => handleRemoveItem(index)}
+                onClick={() => handleRemoveItem(menuItem)}
               >
                 Remove
               </button>
@@ -39,4 +46,4 @@ export default function ({ items }) {
       </section>
     </section>
   );
-}
+ }
