@@ -1,9 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import '../styling/menuPage.css'
-import { meals } from '../food.js'
+import "../styling/menuPage.css";
+import { useEffect, useState } from "react";
 
 export default function () {
+  const [menuItems, setMenuItems] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/fooditems")
+      .then((response) => response.json())
+      .then((data) => setMenuItems(data))
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <section>
       <nav className="menu-nav">
@@ -24,13 +33,13 @@ export default function () {
         <div className="menupage-div" id="starters">
           <h2 className="menu-choices">Starters</h2>
           <ul className="menuList">
-            {meals
-              .filter((meal) => meal.category === "starters")
-              .map((meal) => (
-                <li className="menupage-cards" key={meal.id}>
-                  <h3 className="menu-orders">{meal.mealName}</h3>
-                  <p>{meal.info}</p>
-                  <p>Price: {meal.price}</p>
+            {menuItems
+              .filter((menuItem) => menuItem.category === "starters")
+              .map((menuItem) => (
+                <li className="menupage-cards" key={menuItem.id}>
+                  <h3 className="menu-orders">{menuItem.name}</h3>
+                  <p>{menuItem.info}</p>
+                  <p>Price: {menuItem.price}</p>
                   <button className="add-to-cart">Add to Cart</button>
                   <button className="add-to-cart-copy">
                     <i className="material-icons">add</i>
@@ -42,13 +51,13 @@ export default function () {
         <div className="menupage-div" id="mains">
           <h2 className="menu-choices">Mains</h2>
           <ul className="menuList">
-            {meals
-              .filter((meal) => meal.category === "mains")
-              .map((meal) => (
-                <li className="menupage-cards" key={meal.id}>
-                  <h3 className="menu-orders">{meal.mealName}</h3>
-                  <p>{meal.info}</p>
-                  <p>Price: {meal.price}</p>
+            {menuItems
+              .filter((menuItem) => menuItem.category === "mains")
+              .map((menuItem) => (
+                <li className="menupage-cards" key={menuItem.id}>
+                  <h3 className="menu-orders">{menuItem.name}</h3>
+                  <p>{menuItem.info}</p>
+                  <p>Price: {menuItem.price}</p>
                   <button className="add-to-cart">Add to Cart</button>
                   <button className="add-to-cart-copy">
                     <i className="material-icons">add</i>
@@ -60,13 +69,13 @@ export default function () {
         <div className="menupage-div" id="desserts">
           <h2 className="menu-choices">Desserts</h2>
           <ul className="menuList">
-            {meals
-              .filter((meal) => meal.category === "desserts")
-              .map((meal) => (
-                <li className="menupage-cards" key={meal.id}>
-                  <h3 className="menu-orders">{meal.mealName}</h3>
-                  <p>{meal.info}</p>
-                  <p>Price: {meal.price}</p>
+            {menuItems
+              .filter((menuItem) => menuItem.category === "desserts")
+              .map((menuItem) => (
+                <li className="menupage-cards" key={menuItem.id}>
+                  <h3 className="menu-orders">{menuItem.name}</h3>
+                  <p>{menuItem.info}</p>
+                  <p>Price: {menuItem.price}</p>
                   <button className="add-to-cart">Add to Cart</button>
                   <button className="add-to-cart-copy">
                     <i className="material-icons">add</i>
@@ -78,13 +87,13 @@ export default function () {
         <div className="menupage-div" id="drinks">
           <h2 className="menu-choices">Drinks</h2>
           <ul className="menuList">
-            {meals
-              .filter((meal) => meal.category === "drinks")
-              .map((meal) => (
-                <li className="menupage-cards" key={meal.id}>
-                  <h3 className="menu-orders">{meal.mealName}</h3>
-                  <p>{meal.info}</p>
-                  <p>Price: {meal.price}</p>
+            {menuItems
+              .filter((menuItem) => menuItem.category === "drinks")
+              .map((menuItem) => (
+                <li className="menupage-cards" key={menuItem.id}>
+                  <h3 className="menu-orders">{menuItem.name}</h3>
+                  <p>{menuItem.info}</p>
+                  <p>Price: {menuItem.price}</p>
                   <button className="add-to-cart">Add to Cart</button>
                   <button className="add-to-cart-copy">
                     <i className="material-icons">add</i>

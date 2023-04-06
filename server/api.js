@@ -44,5 +44,8 @@ api.use('/api/accounts', accountRouter)
 import loginRouter from './routes/loginRoute.js'
 api.use('/api/login', loginRouter)
 
+import foodItemsRouter from './routes/foodItemsRoute.js'
+api.use('/api/fooditems', foodItemsRouter)
+
 import adminRouter from './routes/adminRoute.js';
 api.use('/api/admin', adminRouter)
