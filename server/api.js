@@ -2,12 +2,12 @@ import express, { response } from 'express'
 const api = express()
 
 api.use(express.json())
-api.use((request, response, next) => {
-    response.setHeader('Access-Control-Allow-Origin', '*');
-    response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-  });
+api.use((req, res, next) => {
+   res.setHeader('Access-Control-Allow-Origin', '*');
+   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+   next();
+});
 
 import session from 'express-session'
 
@@ -16,11 +16,11 @@ api.use(session({
    secret: 'keyboard cat dskjdsfkjhrjsd',
    resave: false,
    saveUninitialized: true, // false = create session (cookie) when needed
-   cookie: { 
+   cookie: {
       secure: false, // true in production
       httpOnly: true, // cookies are not available in javascript
       maxAge: 365 * 24 * 60 * 60 * 1000 // days * hours * ... ms
-   }  
+   }
 
 }))
 
@@ -28,10 +28,10 @@ import mongoose from 'mongoose'
 const conn = "mongodb+srv://projekt:12345@cluster.oduwork.mongodb.net/test"
 
 api.listen(3000, () => {
-    console.log(`http://localhost:3000`)
-    mongoose.connect(conn, {dbName: 'project'})
-    .catch((err) => {
-        console.log("Error connecting to database: ", err)
+   console.log(`http://localhost:3000`)
+   mongoose.connect(conn, { dbName: 'project' })
+      .catch((err) => {
+         console.log("Error connecting to database: ", err)
       })
 })
 

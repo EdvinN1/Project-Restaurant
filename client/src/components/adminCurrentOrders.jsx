@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 export default function (props) {
   const [orders, setOrders] = useState([]);
 
-  //get all orders
+  //get all incoming orders
   useEffect(() => {
     fetch('http://localhost:3000/api/admin')
       .then(response => response.json())
-      .then(data => setOrders(data))
+      .then(data => { setOrders(data); })
       .catch(error => console.error(error))
   }, []);
 
@@ -16,23 +16,28 @@ export default function (props) {
     //find the index of the item with the matching ID
     const index = orders.findIndex(item => item._id === inData._id);
     if (index >= 0) {
+      //shallow copy of orders array, or the true value will not be updated in acceptedOrders
+      const updatedOrders = [...orders];
+      updatedOrders[index].accepted = true;
+      setOrders(updatedOrders);
       //Remove the item from the source list using splice() and save it in removedItem
       const [removedItem] = orders.splice(index, 1);
-
-      //use function updateAcceptedOrders, send in the item that was removed
-      props.updateAcceptedOrders(removedItem);
-
-      //delete the order from current order
-      deleteInData(inData);
+      //send in the item that was removed
+      props.setAcceptedOrders(prevAcceptedOrders => [...prevAcceptedOrders, removedItem]);
+      //set accepted to true
+      fetch(`http://localhost:3000/api/admin/${inData._id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ accepted: true })
+      })
     }
   };
 
   //function for removing inData from database
   function deleteInData(inData) {
     console.log("delete success");
-    fetch('http://localhost:3000/api/admin/orders', {
+    fetch(`http://localhost:3000/api/admin/${inData._id}`, {
       method: 'DELETE',
-      body: JSON.stringify(inData),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -41,7 +46,6 @@ export default function (props) {
         if (response.ok) {
           // Remove the order from the local state
           setOrders(orders.filter(order => order._id !== inData._id))
-          
         } else {
           console.error('Response not ok')
         }
@@ -57,11 +61,12 @@ export default function (props) {
   return (
     <div>
       <h4>current orders</h4>
-      {orders.map(order => (
+      {orders.filter(order => !order.accepted).map(order => (
         <div>
           <p>orderID: {order.orderID}</p>
           <p>restaurantID: {order.restaurantID}</p>
           <p>orderDate: {order.orderDate}</p>
+          <p>accepted: {order.accepted ? 'true' : 'false'}</p>
           <button className="adminBtn" onClick={() => handleAcceptClick(order)}>accept</button>
           <button className="adminBtn" onClick={() => handleDeclineClick(order)}>decline</button>
         </div>
