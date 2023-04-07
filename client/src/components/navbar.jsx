@@ -36,9 +36,9 @@ export default function Navbar() {
       </nav>
       <div className={"shopcart-hmbrgr-icons-wrapper"}>
         {access.loggedIn && (
-          <button className={"shopping-cart-button"}>
+          <Link to="/cart">
             <i className="material-icons">shopping_cart</i>
-          </button>
+          </Link>
         )}
         {!access.loggedIn && (
           <button className={"account-button"} onClick={handleLogin}>

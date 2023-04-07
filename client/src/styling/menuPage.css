@@ -75,6 +75,9 @@ font-size: auto;
     right: 5px;
     cursor: pointer;
 }
+.add-to-cart:active{
+background-color: rgb(165, 164, 164);
+}
 .add-to-cart-copy {
     display: none;
     border: none;
@@ -88,6 +91,9 @@ font-size: auto;
     cursor: pointer; 
     justify-content: center;
     align-items: center; 
+}
+.add-to-cart-copy:active{
+    background-color: rgb(165, 164, 164);
 }
 @media only screen and (max-width: 650px) {
     .add-to-cart{

@@ -1,46 +1,52 @@
-import React, {useState} from 'react';
-import '../styling/shopping-cart.css';
+import React, { useState } from "react";
+import "../styling/shopping-cart.css";
+import { useStates } from "react-easier";
 
-export default function () {
-    const [items, setItems] = useState(['Product 1', 'Product 2', 'Product 3']);
-    const [newItem, setNewItem] = useState('');
+export default function ({ items }) {
+  const [newItem, setNewItem] = useState("");
 
-    const handleNewItemChange = (event) => {
-        setNewItem(event.target.value);
-    };
+  const cart = useStates("cart");
+  
+  function handleRemoveItem(item) {
+   const index = cart.findIndex(cartItem => cartItem._id === item._id);
+    cart.splice(index, 1);
+  }
 
-    const handleAddItem = () => {
-        setItems([...items, newItem]);
-        setNewItem('');
-    };
+  const totalPrice = cart && cart.length > 0 ? cart.reduce((acc, curr) => acc + parseFloat(curr.price), 0) : 0;
 
-    const handleRemoveItem = (index) => {
-        const newItems = [...items];
-        newItems.splice(index, 1);
-        setItems(newItems);
-    };
-
-    return (
-        <section className="shopping-cart-page">
-            <section></section>
-            <h1 className="shopping-cart__title">Shopping Cart</h1>
-            <section className={"shopping-cart-items"}>
-                <ul className="shopping-cart__list">
-                    {items.map((item, index) => (
-                        <li key={index} className="shopping-cart__item">
-                            {item}{' '}
-                            <p className={"price-per-item"}>Price: 200$</p>
-                            <input className={"shopping-cart-input"} defaultValue={1} min={1} max={100} type={"number"}/>
-                            <button className={"shopping-cart__button"} onClick={() => handleRemoveItem(index)}>Remove
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-            <section className={"checkout-section"}>
-                <p className={"total-cost-text"}>Total cost: 0$</p>
-                <button className="shopping-cart__button shopping-cart__button--checkout">Checkout</button>
-            </section>
-        </section>
-    );
+  return (
+    <section className="shopping-cart-page">
+      <section></section>
+      <h1 className="shopping-cart__title">Shopping Cart</h1>
+      <section className={"shopping-cart-items"}>
+        <ul className="shopping-cart__list">
+          {cart.map((menuItem) => (
+            <li key={menuItem.id} className="shopping-cart__item">
+              <p className={"price-per-item"}> {menuItem.name} </p>
+              <p className={"price-per-item"}>Price: {menuItem.price} </p>
+              <input
+                className={"shopping-cart-input"}
+                defaultValue={1}
+                min={1}
+                max={100}
+                type={"number"}
+              />
+              <button
+                className={"shopping-cart__button"}
+                onClick={() => handleRemoveItem(menuItem)}
+              >
+                Remove
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section className={"checkout-section"}>
+        <p className={"total-cost-text"}>Total cost: {totalPrice} SEK</p>
+        <button className="shopping-cart__button shopping-cart__button--checkout">
+          Checkout
+        </button>
+      </section>
+    </section>
+  );
 }
