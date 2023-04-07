@@ -8,8 +8,10 @@ export default function ({ items }) {
   const cart = useStates("cart");
   
   function handleRemoveItem(item) {
-    cart.splice(item)
+   cart.splice(item)
   }
+  
+  const totalPrice = cart && cart.length > 0 ? cart.reduce((acc, curr) => acc + parseFloat(curr.price), 0) : 0;
 
   return (
     <section className="shopping-cart-page">
@@ -39,11 +41,11 @@ export default function ({ items }) {
         </ul>
       </section>
       <section className={"checkout-section"}>
-        <p className={"total-cost-text"}>Total cost: 0$</p>
+        <p className={"total-cost-text"}>Total cost: {totalPrice} SEK</p>
         <button className="shopping-cart__button shopping-cart__button--checkout">
           Checkout
         </button>
       </section>
     </section>
   );
- }
+}
