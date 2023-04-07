@@ -12,6 +12,17 @@ export default function ({ items }) {
     cart.splice(index, 1);
   }
 
+  function handleCheckoutClick(){
+    console.log("clicked checkout!");
+    let number = Math.floor(Math.random() * 100 + 1);
+    const data = {fooditems: cart, restaurantID: number};
+    fetch('http://localhost:3000/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+  }
+
   const totalPrice = cart && cart.length > 0 ? cart.reduce((acc, curr) => acc + parseFloat(curr.price), 0) : 0;
 
   return (
@@ -43,7 +54,7 @@ export default function ({ items }) {
       </section>
       <section className={"checkout-section"}>
         <p className={"total-cost-text"}>Total cost: {totalPrice} SEK</p>
-        <button className="shopping-cart__button shopping-cart__button--checkout">
+        <button className="shopping-cart__button shopping-cart__button--checkout" onClick={() => handleCheckoutClick()}>
           Checkout
         </button>
       </section>

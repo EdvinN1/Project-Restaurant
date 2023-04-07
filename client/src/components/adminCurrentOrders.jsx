@@ -5,7 +5,7 @@ export default function (props) {
 
   //get all incoming orders
   useEffect(() => {
-    fetch('http://localhost:3000/api/admin')
+    fetch('http://localhost:3000/api/orders')
       .then(response => response.json())
       .then(data => { setOrders(data); })
       .catch(error => console.error(error))
@@ -25,7 +25,7 @@ export default function (props) {
       //send in the item that was removed
       props.setAcceptedOrders(prevAcceptedOrders => [...prevAcceptedOrders, removedItem]);
       //set accepted to true
-      fetch(`http://localhost:3000/api/admin/${inData._id}`, {
+      fetch(`http://localhost:3000/api/orders/${inData._id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ accepted: true })
@@ -36,7 +36,7 @@ export default function (props) {
   //function for removing inData from database
   function deleteInData(inData) {
     console.log("delete success");
-    fetch(`http://localhost:3000/api/admin/${inData._id}`, {
+    fetch(`http://localhost:3000/api/orders/${inData._id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'

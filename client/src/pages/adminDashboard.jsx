@@ -15,7 +15,7 @@ export default function () {
 
     //get all accepted orders
     useEffect(() => {
-        fetch('http://localhost:3000/api/admin')
+        fetch('http://localhost:3000/api/orders')
             .then(response => response.json())
             .then(data => { setAcceptedOrders(data); })
             .catch(error => console.error(error))
@@ -40,7 +40,7 @@ export default function () {
     //handle ready button, right now just deletes the order, maybe change it later
     function handleReadyClick(inData) {
         console.log("delete");
-        fetch(`http://localhost:3000/api/admin/${inData._id}`, {
+        fetch(`http://localhost:3000/api/orders/${inData._id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

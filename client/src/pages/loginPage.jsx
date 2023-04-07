@@ -26,6 +26,10 @@ export default function () {
     const access = useStates("access")
 
     if (access.loggedIn) {
+        if (access.admin) {
+             navigate('/admin-section');
+             return null;
+        }
         navigate('/');
         return null;
       }

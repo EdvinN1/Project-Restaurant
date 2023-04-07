@@ -1,6 +1,6 @@
 export default function () {
     //delete all orders
-    fetch('http://localhost:3000/api/admin', {
+    fetch('http://localhost:3000/api/orders', {
         method: 'DELETE'
     })
         .then(response => response.json())
