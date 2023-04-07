@@ -8,9 +8,10 @@ export default function ({ items }) {
   const cart = useStates("cart");
   
   function handleRemoveItem(item) {
-   cart.splice(item)
+   const index = cart.findIndex(cartItem => cartItem._id === item._id);
+    cart.splice(index, 1);
   }
-  
+
   const totalPrice = cart && cart.length > 0 ? cart.reduce((acc, curr) => acc + parseFloat(curr.price), 0) : 0;
 
   return (
