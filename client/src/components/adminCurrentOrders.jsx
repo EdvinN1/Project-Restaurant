@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function (props) {
   const [orders, setOrders] = useState([]);
+  const [item, setItem] = useState("");
 
   //get all incoming orders
   useEffect(() => {
@@ -58,6 +59,17 @@ export default function (props) {
     deleteInData(inData);
   }
 
+  function mapItem(inId) {
+    fetch(`http://localhost:3000/api/foodItems/${inId}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log("mapitemdata: " + data.name);
+        const newItems = [...items, data.name]
+        setItem(newItems);
+      })
+      .catch(error => console.error(error))
+  }
+
   return (
     <div>
       <h4>current orders</h4>
@@ -67,6 +79,13 @@ export default function (props) {
           <p>restaurantID: {order.restaurantID}</p>
           <p>orderDate: {order.orderDate}</p>
           <p>accepted: {order.accepted ? 'true' : 'false'}</p>
+          <p>items:</p>
+          <ul>
+            {order.itemNames.map(item => (
+              <p>{item}</p>
+            ))}
+          </ul>
+          {/* <p>quantity: {order.quantities}</p> */}
           <button className="adminBtn" onClick={() => handleAcceptClick(order)}>accept</button>
           <button className="adminBtn" onClick={() => handleDeclineClick(order)}>decline</button>
         </div>

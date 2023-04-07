@@ -82,6 +82,11 @@ export default function () {
                             <p>restaurantID: {order.restaurantID}</p>
                             <p>orderDate: {order.orderDate}</p>
                             <p>accepted: {order.accepted ? 'true' : 'false'}</p>
+                            <ul>
+                                {order.itemNames.map(item => (
+                                    <p>{item}</p>
+                                ))}
+                            </ul>
                             <button className="adminBtn" onClick={() => handleReadyClick(order)}>Ready</button>
                         </div>
                     ))}

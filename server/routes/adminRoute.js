@@ -15,9 +15,11 @@ const ordersSchema = new Schema({
   orderID: Number,
   orderDate: String,
   restaurantID: Number,
-  foodItems: [foodItemsSchema],
+  itemNames: [String],
+  quantities: [Number],
   accepted: { type: Boolean, default: false }
 })
+
 
 if (!mongoose.models.orders) {
   mongoose.model('orders', ordersSchema)
@@ -27,8 +29,9 @@ adminRouter.post('/', async (request, response) => {
   const order = new mongoose.models.orders();
   order.orderID = orderID += 1;
   order.orderDate = getDate();
-  order.restaurantID = request.body.restaurantID;
-  order.foodItems = request.body.foodItems;
+  order.restaurantID = Math.floor(Math.random() * 5 + 1); //just a random number to simulate a restaurant
+  order.itemNames = request.body.itemNames;
+  order.quantities = request.body.quantities;
   await order.save();
   response.sendStatus(201);
 })
@@ -39,7 +42,7 @@ function getDate() {
     + currentDate.getHours() + ':'
     + currentDate.getMinutes() + ':'
     + currentDate.getSeconds();
-    return orderDate;
+  return orderDate;
 }
 
 /* adminRouter.post('/', async (request, response) => {
