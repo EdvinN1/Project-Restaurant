@@ -23,7 +23,7 @@ export default function (props) {
       setOrders(updatedOrders);
       //Remove the item from the source list using splice() and save it in removedItem
       const [removedItem] = orders.splice(index, 1);
-      //send in the item that was removed
+      //send in the item that was removed to setAcceptedOrders in the parent
       props.setAcceptedOrders(prevAcceptedOrders => [...prevAcceptedOrders, removedItem]);
       //set accepted to true
       fetch(`http://localhost:3000/api/orders/${inData._id}`, {
@@ -81,8 +81,8 @@ export default function (props) {
           <p>accepted: {order.accepted ? 'true' : 'false'}</p>
           <p>items:</p>
           <ul>
-            {order.itemNames.map(item => (
-              <p>{item}</p>
+            {order.items.map(item => (
+              <p>{item.itemName} X {item.quantity}</p>
             ))}
           </ul>
           {/* <p>quantity: {order.quantities}</p> */}

@@ -46,6 +46,7 @@ export default function () {
                   <h3 className="menu-orders">{menuItem.name}</h3>
                   <p>{menuItem.info}</p>
                   <p>Price: {menuItem.price}</p>
+                  <img src={menuItem.picture} height="150"></img>
                   <button
                     className="add-to-cart"
                     onClick={() => handleButtonClick(menuItem)}
@@ -72,6 +73,7 @@ export default function () {
                   <h3 className="menu-orders">{menuItem.name}</h3>
                   <p>{menuItem.info}</p>
                   <p>Price: {menuItem.price}</p>
+                  <img src={menuItem.picture} height="150"></img>
                   <button
                     className="add-to-cart"
                     onClick={() => handleButtonClick(menuItem)}
@@ -98,6 +100,7 @@ export default function () {
                   <h3 className="menu-orders">{menuItem.name}</h3>
                   <p>{menuItem.info}</p>
                   <p>Price: {menuItem.price}</p>
+                  <img src={menuItem.picture} height="150"></img>
                   <button
                     className="add-to-cart"
                     onClick={() => handleButtonClick(menuItem)}
@@ -124,6 +127,7 @@ export default function () {
                   <h3 className="menu-orders">{menuItem.name}</h3>
                   <p>{menuItem.info}</p>
                   <p>Price: {menuItem.price}</p>
+                  <img src={menuItem.picture} height="150"></img>
                   <button
                     className="add-to-cart"
                     onClick={() => handleButtonClick(menuItem)}

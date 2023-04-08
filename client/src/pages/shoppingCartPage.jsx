@@ -13,12 +13,13 @@ export default function ({ items }) {
   }
 
   function handleCheckoutClick(){
+    //do nothing if the cart is empty
     if(cart.length === 0){
       console.log("cart is empty!");
       return;
     }
-    let number = Math.floor(Math.random() * 100 + 1);
-    const data = {restaurantID: number, itemNames: getNames(), quantities: getQuantities() };
+    //post the data to orders, function getNameAndId will return an object with name and quantity
+    const data = {items: getNameAndQuantity() };
     fetch('http://localhost:3000/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -27,20 +28,10 @@ export default function ({ items }) {
   }
 
   //get names of items
-  function getNames(){
+  function getNameAndQuantity(){
     const returnArray = [];
     for(let i=0; i<cart.length; i++){
-      let data = cart[i].name;
-      returnArray.push(data);
-    }
-    return returnArray;
-  }
-
-  //get quantities of items, this needs to be fixed a bit. right now just gives 1 to all
-  function getQuantities(){
-    const returnArray = [];
-    for(let i=0; i<cart.length; i++){
-      let data = 1;
+      let data = {itemName: cart[i].name, quantity: 1}; //<------have to fix this one, quantity
       returnArray.push(data);
     }
     return returnArray;
