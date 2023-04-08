@@ -6,7 +6,7 @@ import { GlobalProvider } from './GlobalContext';
 
 function App() {
     useAutoKeys();
-    useDebug();
+    /* useDebug(); */
     useStates("access", {
         admin: false,
         loggedIn: false

@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 
 export default function (props) {
   const [orders, setOrders] = useState([]);
+  const [item, setItem] = useState("");
 
   //get all incoming orders
   useEffect(() => {
-    fetch('http://localhost:3000/api/admin')
+    fetch('http://localhost:3000/api/orders')
       .then(response => response.json())
       .then(data => { setOrders(data); })
       .catch(error => console.error(error))
@@ -22,10 +23,10 @@ export default function (props) {
       setOrders(updatedOrders);
       //Remove the item from the source list using splice() and save it in removedItem
       const [removedItem] = orders.splice(index, 1);
-      //send in the item that was removed
+      //send in the item that was removed to setAcceptedOrders in the parent
       props.setAcceptedOrders(prevAcceptedOrders => [...prevAcceptedOrders, removedItem]);
       //set accepted to true
-      fetch(`http://localhost:3000/api/admin/${inData._id}`, {
+      fetch(`http://localhost:3000/api/orders/${inData._id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ accepted: true })
@@ -36,7 +37,7 @@ export default function (props) {
   //function for removing inData from database
   function deleteInData(inData) {
     console.log("delete success");
-    fetch(`http://localhost:3000/api/admin/${inData._id}`, {
+    fetch(`http://localhost:3000/api/orders/${inData._id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -58,6 +59,17 @@ export default function (props) {
     deleteInData(inData);
   }
 
+  function mapItem(inId) {
+    fetch(`http://localhost:3000/api/foodItems/${inId}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log("mapitemdata: " + data.name);
+        const newItems = [...items, data.name]
+        setItem(newItems);
+      })
+      .catch(error => console.error(error))
+  }
+
   return (
     <div>
       <h4>current orders</h4>
@@ -67,6 +79,13 @@ export default function (props) {
           <p>restaurantID: {order.restaurantID}</p>
           <p>orderDate: {order.orderDate}</p>
           <p>accepted: {order.accepted ? 'true' : 'false'}</p>
+          <p>items:</p>
+          <ul>
+            {order.items.map(item => (
+              <p>{item.itemName} X {item.quantity}</p>
+            ))}
+          </ul>
+          {/* <p>quantity: {order.quantities}</p> */}
           <button className="adminBtn" onClick={() => handleAcceptClick(order)}>accept</button>
           <button className="adminBtn" onClick={() => handleDeclineClick(order)}>decline</button>
         </div>

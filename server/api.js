@@ -46,4 +46,5 @@ import foodItemsRouter from './routes/foodItemsRoute.js'
 api.use('/api/fooditems', foodItemsRouter)
 
 import adminRouter from './routes/adminRoute.js';
-api.use('/api/admin', adminRouter)
+api.use('/api/orders', adminRouter)
+
