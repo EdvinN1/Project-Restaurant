@@ -7,7 +7,7 @@ import { useStates } from "react-easier";
 export default function () {
   const [menuItems, setMenuItems] = useState([]);
 
-  const cart = useStates("cart");
+  const cartMan = useStates("cartMan");   // <---yes, name is from Cartman in southpark
 
   useEffect(() => {
     fetch("http://localhost:3000/api/fooditems")
@@ -15,10 +15,25 @@ export default function () {
       .then((data) => setMenuItems(data))
       .catch((error) => console.error(error));
   }, []);
-  console.log(cart);
-  function handleButtonClick(item) {
-    cart.push(item);
+
+  function handleButtonClick(inItem) {
+    const item = { ...inItem };
+    const tmpObject = { item: inItem, quantity: 1 };
+    //look for item in array
+    for (let i = 0; i < cartMan.length; i++) {
+      //if its there, dont push it, just add quantity and stop the function
+      if (item._id === cartMan[i].item._id) {
+        console.log("is already in array!");
+        cartMan[i].quantity += 1;
+        console.log("quantity: " + cartMan[i].quantity);
+        return;
+      }
+    }
+    //if its not found, push it, its a new item
+    cartMan.push(tmpObject);
+    console.log("added new item");
   }
+
   return (
     <section>
       <nav className="menu-nav">
