@@ -4,7 +4,8 @@
     border-radius: 5px;
     padding: 20px;
     width: 100vw;
-    height: 91vh;
+    min-height: 91vh;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,8 +37,9 @@
     border: 1px solid #000000;
     padding: 10px 0 10px 0;
     margin: 20px 0;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
     border-radius: 3px;
 }
 
@@ -61,7 +63,6 @@
 }
 
 .checkout-section {
-    position: absolute;
     display: flex;
     flex-direction: row;
     bottom: 4vh;
