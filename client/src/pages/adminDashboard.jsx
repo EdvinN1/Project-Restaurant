@@ -90,7 +90,7 @@ export default function () {
                                     <p>{item.itemName} X {item.quantity}</p>
                                 ))}
                             </ul>
-                            <button className="adminBtn" onClick={() => handleReadyClick(order)}>Ready</button>
+                            <button className="adminBtn" onClick={() => handleReadyClick(order)}>Ready</button><br></br><br></br>
                         </div>
                     ))}
                 </div>

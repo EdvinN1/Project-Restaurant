@@ -24,16 +24,6 @@ function App() {
   }, [])
 
     useStates("cartMan", ([]));
-<<<<<<< HEAD
-    /* useStates("userName",''); */
-    return (
-        <GlobalProvider>
-            <Navbar/>
-            <Outlet/>
-            <Footer/>
-        </GlobalProvider>
-    )
-=======
   return (
     <GlobalProvider>
       <Navbar />
@@ -41,7 +31,6 @@ function App() {
       <Footer />
     </GlobalProvider>
   )
->>>>>>> main
 }
 
 export default App;
