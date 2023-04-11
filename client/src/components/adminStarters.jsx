@@ -12,10 +12,11 @@ export default function () {
     }, []);
 
 function handleEditClick(inItem){
-    let a = document.getElementById("edit").contentEditable;
-    console.log("yes:" + a);
-    a = !a;
-    document.getElementById("edit").contentEditable = a;
+
+}
+
+function handleChange(){
+
 }
 
     return (
@@ -24,9 +25,10 @@ function handleEditClick(inItem){
             {starters.filter(item => item.category === "starters").map(item => (
                 <div>
                     <p >name: {item.name}</p>
-                    <p>price: </p><p id="edit" contentEditable="true">{item.price}</p>
+                    <p>price: </p><p id="edit">{item.price}</p>
                     <p>info: {item.info}</p>
                     <p>category: {item.category}</p>
+                    <input type="text" value="hejsan!" onChange={handleChange()} />
                     <button className="adminBtn" onClick={() => handleEditClick(item)}>hello</button>
                     <br></br><br></br>
                     

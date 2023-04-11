@@ -29,7 +29,9 @@ export default function ({ items }) {
     const index = cartMan.findIndex((cartItem) => cartItem.item._id === item._id);
     //have to remove the cost of the last item, so call this function
     handleQuantityChange(item, 0);
+    const newCart = [...cartMan];
     cartMan.splice(index, 1);
+    cartMan;
   }
 
   function handleCheckoutClick() {
