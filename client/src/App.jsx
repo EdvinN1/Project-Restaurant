@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 function App() {
   useAutoKeys();
-  useDebug();
+  /* useDebug(); */
   useStates("access", {
     admin: false,
     loggedIn: false
@@ -23,6 +23,7 @@ function App() {
     }
   }, [])
 
+    useStates("cartMan", ([]));
   return (
     <GlobalProvider>
       <Navbar />

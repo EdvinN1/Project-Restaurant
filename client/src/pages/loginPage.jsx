@@ -28,6 +28,10 @@ export default function () {
     };
 
     if (access.loggedIn) {
+        if (access.admin) {
+             navigate('/admin-section');
+             return null;
+        }
         navigate('/');
         return null;
       }

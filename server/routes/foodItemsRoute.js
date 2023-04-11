@@ -11,12 +11,25 @@ const foodItemsSchema = new Schema({
     picture: String
 })
 
+const cartSchema = new Schema({
+    items: [{
+        itemId: String,
+        quantity: Number
+    }]
+})
+
 mongoose.model('foodItems', foodItemsSchema)
 
 foodItemsRouter.get('/', async (request, response )=>{
     const foodItem = await mongoose.models.foodItems.find()
     response.json(foodItem)
 })
+
+//get a specific item
+foodItemsRouter.get('/:id', async (request, response )=>{
+    const foodItem = await mongoose.models.foodItems.findById(request.params.id)
+    response.json(foodItem)
+  })
 
 foodItemsRouter.delete('/:id', async (request, response)=> {
     await mongoose.models.foodItems.findByIdAndDelete(request.params.id)
