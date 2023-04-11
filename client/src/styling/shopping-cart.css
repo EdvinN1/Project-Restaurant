@@ -42,9 +42,10 @@
 }
 
 .shopping-cart-img{
-    inline-size: 15vh;
+    inline-size: 16vh;
     aspect-ratio: 16/9;
     object-fit: cover;
+    align-self: center;
 }
 
 .shopping-cart__item:hover {
@@ -112,7 +113,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .price-per-item {
-    color: #494949;
+    color: #6b6b6b;
     grid-column: 2;
     grid-row: 1;
     align-self: center;
@@ -124,6 +125,7 @@ input[type=number]::-webkit-outer-spin-button {
     grid-column: 2;
     grid-row: 1;
     font-size: 15px;
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 1024px) {
