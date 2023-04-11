@@ -55,15 +55,18 @@ text-decoration: none;
 color: black;
 font-size: auto;
 }
+
 .menupage-cards:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     transform: translateY(-5px);
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
+
 .menu-orders {
     margin-top: 0;
     font-size: 1.2rem;
 }
+
 .add-to-cart {
     border: none;
     padding: 10px 20px;
