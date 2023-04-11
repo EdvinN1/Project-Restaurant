@@ -102,7 +102,7 @@ h1{
     100%{opacity: 0;}
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1600px) {
     .slide1, .slide2, .slide3, .slide4, .slide5{
         height: 600px;
     }
