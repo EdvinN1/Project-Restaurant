@@ -20,7 +20,6 @@ loginRouter.post('/', async (request, response)=>{
 
     if(account){
         response.status(201)
-        request.session.account = account
         response.json({'loggedIn':true, admin: account.admin})
     }else{
         response.status(401)

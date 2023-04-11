@@ -5,7 +5,6 @@ import { Link } from "react-router-dom"
 
 export default function () {
   const { handleLogin, access } = useContext(GlobalContext);
-
   return (
     <section className="wrapper">
       <h1>KYOTO HUT</h1>
