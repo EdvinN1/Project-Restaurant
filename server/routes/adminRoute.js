@@ -33,8 +33,7 @@ function getDate() {
   const currentDate = new Date();
   const orderDate = currentDate.toISOString().slice(0, 10) + ' '
     + currentDate.getHours() + ':'
-    + currentDate.getMinutes() + ':'
-    + currentDate.getSeconds();
+    + currentDate.getMinutes()
   return orderDate;
 }
 

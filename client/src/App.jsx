@@ -12,6 +12,7 @@ function App() {
         loggedIn: false
     })
     useStates("cart",[])
+    useStates("cartMan", ([]));
     return (
         <GlobalProvider>
             <Navbar/>

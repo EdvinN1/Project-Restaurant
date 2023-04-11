@@ -76,7 +76,13 @@
     margin-top: 10px;
     width: 4.1vw;
     height: 2vw;
-    border: 0;
+    border: 1;
+}
+
+/* for arrows to always show on number input*/
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 0.5;
 }
 
 .price-per-item {
