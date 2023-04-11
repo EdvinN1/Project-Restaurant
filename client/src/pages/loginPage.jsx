@@ -4,10 +4,12 @@ import '../styling/account.css'
 import { useStates } from 'react-easier';
 import { GlobalContext } from '../GlobalContext';
 
+
 export default function () {
 
     const { updateLoggedIn } = useContext(GlobalContext);
     const navigate = useNavigate();
+    const access = useStates("access");
 
     const submit = async (e) => {
         e.preventDefault();
@@ -17,13 +19,13 @@ export default function () {
             body: JSON.stringify(login)
           });
           let response = await rawResponse.json();
-          updateLoggedIn(true);
-          access.admin = response.admin;
-          access.loggedIn = response.loggedIn
-          console.log(response)
+            updateLoggedIn(true);
+            access.admin = response.admin;
+            access.loggedIn = response.loggedIn;
+            console.log(response)
+            sessionStorage.setItem("loggedIn", response.loggedIn)
+            sessionStorage.setItem("admin", response.admin)
     };
-
-    const access = useStates("access")
 
     if (access.loggedIn) {
         if (access.admin) {
