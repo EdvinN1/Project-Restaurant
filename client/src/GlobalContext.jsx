@@ -28,6 +28,8 @@ export const GlobalProvider = ({ children }) => {
       method: 'DELETE'
     });
     const response = await rawResponse.json();
+    sessionStorage.removeItem("loggedIn", response.loggedIn)
+    sessionStorage.removeItem("admin", response.admin)
     updateLoggedIn(false);
     access.admin = false;
     access.loggedIn = false;
