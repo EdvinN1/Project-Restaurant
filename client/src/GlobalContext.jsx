@@ -1,16 +1,33 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useStates } from 'react-easier';
 
 export const GlobalContext = createContext({
   loggedIn: false,
   setLoggedIn: () => {},
-  navigate: null
+  navigate: null,
+  userData: null,
+  setUserData: () => {}
 });
 
 export const GlobalProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    // Check if user data is stored in local storage
+    if(localStorage.getItem('userData')) {
+      // Retrieve the user data from local storage
+      const storedUserData = JSON.parse(localStorage.getItem('userData'));
+      
+      // Set the user data state variable
+      setUserData(storedUserData);
+      
+      // Set the authentication status state variable to true
+      setLoggedIn(true);
+    }
+  }, []);
 
   const updateLoggedIn = (loggedIn) => {
     setLoggedIn(loggedIn);
@@ -18,9 +35,16 @@ export const GlobalProvider = ({ children }) => {
 
   const access = useStates("access");
 
-  const handleLogin = () => {
-    navigate("/login")
-    updateLoggedIn(true);
+  const handleLogin = (userData) => {
+    setUserData(userData);
+    setLoggedIn(true);
+    access.admin = userData.admin;
+    access.loggedIn = true;
+
+    // Store the user data in local storage
+    localStorage.setItem('userData', JSON.stringify(userData));
+
+    navigate("/");
   };
 
   const handleLogout = async () => {
@@ -28,14 +52,14 @@ export const GlobalProvider = ({ children }) => {
       method: 'DELETE'
     });
     const response = await rawResponse.json();
-    updateLoggedIn(false);
+    setLoggedIn(false);
+    setUserData(null);
     access.admin = false;
     access.loggedIn = false;
     console.log(response);
+    localStorage.removeItem('userData');
     navigate('/');
   };
-
-  
 
   return (
     <GlobalContext.Provider value={{ 
@@ -44,7 +68,9 @@ export const GlobalProvider = ({ children }) => {
         navigate,
         handleLogin,
         handleLogout,
-        access 
+        access,
+        userData,
+        setUserData
         }}>
       {children}
     </GlobalContext.Provider>

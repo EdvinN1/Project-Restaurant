@@ -17,11 +17,13 @@ export default function () {
             body: JSON.stringify(login)
           });
           let response = await rawResponse.json();
+          localStorage.setItem('loggedInUser', JSON.stringify({ name: login.name, password: login.password }));
           updateLoggedIn(true);
           access.admin = response.admin;
           access.loggedIn = response.loggedIn
           console.log(response)
     };
+    
 
     const access = useStates("access")
 
