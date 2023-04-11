@@ -8,6 +8,7 @@ export default function () {
 
     const { updateLoggedIn } = useContext(GlobalContext);
     const navigate = useNavigate();
+    const userName = useStates("userName");
 
     const submit = async (e) => {
         e.preventDefault();
@@ -21,6 +22,7 @@ export default function () {
           access.admin = response.admin;
           access.loggedIn = response.loggedIn
           console.log(response)
+
     };
 
     const access = useStates("access")

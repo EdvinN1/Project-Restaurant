@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export default function () {
     const [users, setUsers] = useState([])
 
-    //get all orders
+    //get all accounts
     useEffect(() => {
         fetch('http://localhost:3000/api/accounts')
             .then(response => response.json())

@@ -13,6 +13,7 @@ function App() {
     })
     useStates("cart",[])
     useStates("cartMan", ([]));
+    /* useStates("userName",''); */
     return (
         <GlobalProvider>
             <Navbar/>
