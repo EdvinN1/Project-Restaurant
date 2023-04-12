@@ -27,8 +27,6 @@
     margin: 0;
     margin-bottom: 20px;
     width: 60vw;
-
-
 }
 
 .shopping-cart__item {
@@ -41,8 +39,8 @@
     height: 93px;
 }
 
-.shopping-cart-img{
-    inline-size: 16vh;
+.shopping-cart-img {
+    max-width: 120px;
     aspect-ratio: 16/9;
     object-fit: cover;
     align-self: center;
