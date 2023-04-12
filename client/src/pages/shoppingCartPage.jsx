@@ -52,12 +52,6 @@ export default function ({ items }) {
   }
 
   function getUser(){
-/*     console.log("in getuser") */
-/* console.log("maillengthbefore: " + user.length);
-    fetch('http://localhost:3000/api/accounts')
-    .then(response => response.json())
-    .then(data => setUser(data))
-    .catch(error => console.error(error)) */
   
     for (let i = 0; i < users.length; i++) {
       console.log("name: " + users[i].name);
