@@ -96,5 +96,4 @@ export default function ({ items }) {
       </section>
     </section>
   );
-
 }
