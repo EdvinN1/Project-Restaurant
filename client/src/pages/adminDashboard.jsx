@@ -1,5 +1,7 @@
 import "../styling/adminsection.css"
 import { useState, useEffect } from "react";
+import { useStates } from "react-easier"
+import { useNavigate } from "react-router-dom"
 import AdminUsers from "../components/adminUsers";
 import AdminStarters from "../components/adminStarters";
 import AdminEntree from "../components/adminEntree";
@@ -14,6 +16,23 @@ import AdminAddItem from "../components/adminAddItem";
 export default function () {
     const [selectedCategory, setSelectedCategory] = useState("");
     const [acceptedOrders, setAcceptedOrders] = useState([]);
+    const access = useStates("access")
+    const navigate = useNavigate()
+
+    if (!access.loggedIn) {
+        // If the user is not logged in, redirect to the homepage
+        navigate('/');
+        return null;
+      }
+      
+      if (access.admin) {
+        // If the user is logged in as an admin, show the admin section
+        
+      } else {
+        // If the user is logged in but not an admin, redirect to the homepage
+        navigate('/');
+        return null;
+      }
 
     //get all accepted orders
     useEffect(() => {
