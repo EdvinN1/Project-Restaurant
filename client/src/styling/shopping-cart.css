@@ -4,7 +4,7 @@
     border-radius: 5px;
     padding: 20px;
     width: 100vw;
-    height: 91vh;
+    min-height: 91vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,13 +32,26 @@
 }
 
 .shopping-cart__item {
-    font-size: 20px;
     border: 1px solid #000000;
-    padding: 10px 0 10px 0;
+    padding: 10px 10px 10px 10px;
     margin: 20px 0;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     border-radius: 3px;
+    height: 93px;
+}
+
+.shopping-cart-img{
+    inline-size: 16vh;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    align-self: center;
+}
+
+.shopping-cart__item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: translateX(2.5px);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .shopping-cart__button {
@@ -46,14 +59,28 @@
     color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 10px;
-    font-size: 20px;
     cursor: pointer;
-    margin-left: 10px;
+    width: 30px;
+    height: fit-content;
+    align-self: center;
+    justify-self: center;
+    padding-top: 4px;
 }
 
 .shopping-cart__button:hover {
     background-color: #005b7f;
+}
+
+.shopping-cart__button--checkout{
+    background-color: #008cba;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    align-self: center;
+    padding: 4px;
 }
 
 .total-cost-text {
@@ -61,11 +88,10 @@
 }
 
 .checkout-section {
-    position: absolute;
     display: flex;
     flex-direction: row;
     bottom: 4vh;
-    width: 300px;
+    width: 250px;
     justify-content: space-evenly;
     align-items: center;
     border: 1px solid #e91e63;
@@ -73,10 +99,11 @@
 }
 
 .shopping-cart-input {
-    margin-top: 10px;
-    width: 4.1vw;
-    height: 2vw;
+    width: 30px;
+    height: 30px;
     border: 1;
+    align-self: center;
+    justify-self: center;
 }
 
 /* for arrows to always show on number input*/
@@ -86,25 +113,40 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .price-per-item {
-    margin-top: 10px;
-    color: #24262b;
+    color: #6b6b6b;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    font-size: 15px;
+}
 
+.item-name {
+    color: #24262b;
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 1024px) {
     .shopping-cart__item {
         font-size: 2vh;
     }
-    .shopping-cart__button{
-        font-size: 10px;
-    }
-    .price-per-item{
-        font-size: 10px;
-    }
     .shopping-cart__list{
         width: 90vw;
     }
 }
+    @media only screen and (max-width: 660px) {
+        .shopping-cart-img{
+            display: none;
+        }
+        .item-name{
+            grid-column: 1;
+            align-self: center;
+            border-right: 1px solid #24262b;
+            margin:0 4px 0 4px;
+        }
+    }
 
     @media only screen and (max-width: 300px) {
         body {

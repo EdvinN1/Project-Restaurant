@@ -66,7 +66,8 @@ export default function ({ items }) {
         <ul className="shopping-cart__list">
           {cartMan.map((menuItem) => (
             <li className="shopping-cart__item">
-              <p className={"price-per-item"}> {menuItem.item.name} </p>
+            <img className="shopping-cart-img" onError={""} src={menuItem.item.picture}></img>
+              <p className={"item-name"}> {menuItem.item.name} </p>
               <p className={"price-per-item"}>Price: {menuItem.item.price} </p>
               <input
                 className={"shopping-cart-input"}
@@ -81,7 +82,7 @@ export default function ({ items }) {
                 className={"shopping-cart__button"}
                 onClick={() => handleRemoveItem(menuItem.item)}
               >
-                Remove
+              <i className="material-icons">close</i>
               </button>
             </li>
           ))}
@@ -89,10 +90,11 @@ export default function ({ items }) {
       </section>
       <section className={"checkout-section"}>
         <p className={"total-cost-text"}>Total cost: {totPrice} SEK</p>
-        <button className="shopping-cart__button shopping-cart__button--checkout" onClick={() => handleCheckoutClick()}>
+        <button className="shopping-cart__button--checkout" onClick={() => handleCheckoutClick()}>
           Checkout
         </button>
       </section>
     </section>
   );
+
 }
