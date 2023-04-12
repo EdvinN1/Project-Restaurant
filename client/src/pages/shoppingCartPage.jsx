@@ -1,9 +1,28 @@
 import React, { useEffect, useState } from "react";
 import "../styling/shopping-cart.css";
 import { useStates } from "react-easier";
+import { useNavigate } from "react-router-dom";
 
 export default function ({ items }) {
   const cartMan = useStates("cartMan")
+
+  const navigate = useNavigate()
+  const access = useStates("access")
+
+  if (!access.loggedIn) {
+    navigate('/');
+    return null;
+  }
+
+  const [users, setUsers] = useState([]);
+
+  //need this part to compare with user
+  useEffect(() => {
+    fetch('http://localhost:3000/api/accounts')
+        .then(response => response.json())
+        .then(data => setUsers(data))
+        .catch(error => console.error(error))
+}, []);
 
   //the total price, using a super formula to calculate
   const [totPrice, setTotPrice] = useState(calculateTotalPrice(cartMan));

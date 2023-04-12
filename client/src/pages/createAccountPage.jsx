@@ -19,9 +19,9 @@ export default function () {
           });
           let response = await rawResponse.json();
           console.log(response)
-        }
 
-        navigate("/login")
+        }
+        
       };
 
       const access = useStates("access")
@@ -58,7 +58,7 @@ export default function () {
                         <div className="error"></div>
                     </div>
                     <div className="input-control">
-                        <label htmlFor="password2">Confirm paassword</label>
+                        <label htmlFor="password2">Confirm password</label>
                         <input id="password2" name="password2" type="password"/>
                         <div className="error"></div>
                     </div>
