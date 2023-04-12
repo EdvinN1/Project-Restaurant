@@ -44,6 +44,7 @@
     aspect-ratio: 16/9;
     object-fit: cover;
     align-self: center;
+    max-height: 90px;
 }
 
 .shopping-cart__item:hover {
@@ -138,6 +139,7 @@ input[type=number]::-webkit-outer-spin-button {
         .shopping-cart-img{
             display: none;
         }
+
         .item-name{
             grid-column: 1;
             align-self: center;
