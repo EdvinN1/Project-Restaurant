@@ -57,7 +57,14 @@ export default function ({ items }) {
       console.log("name: " + users[i].name);
       console.log("email: " + users[i].email);
     }
-  }
+  
+   //empty the shopping cart
+   cartMan.splice(0, cartMan.length);
+   setTotPrice(0);
+ 
+   //show popup message
+   alert("Your order has been sent!");
+ }
 
   //get names of items and quantity
   function getNameAndQuantity() {
