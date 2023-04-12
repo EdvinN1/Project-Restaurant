@@ -26,7 +26,7 @@ accountRouter.get('/', async (request, response)=>{
     response.json(account)
 })
 
-//delete accounts
+//delete account
 accountRouter.delete('/:id', async (request, response)=>{
     await mongoose.models.accounts.findByIdAndDelete(request.params.id)
     const result = await mongoose.models.accounts.findById(request.params.id)

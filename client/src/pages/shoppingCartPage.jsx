@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styling/shopping-cart.css";
 import { useStates } from "react-easier";
 
 export default function ({ items }) {
   const cartMan = useStates("cartMan")
+
+  const [users, setUsers] = useState([]);
+
+  //need this part to compare with user
+  useEffect(() => {
+    fetch('http://localhost:3000/api/accounts')
+        .then(response => response.json())
+        .then(data => setUsers(data))
+        .catch(error => console.error(error))
+}, []);
 
   //the total price, using a super formula to calculate
   const [totPrice, setTotPrice] = useState(calculateTotalPrice(cartMan));
@@ -19,7 +29,9 @@ export default function ({ items }) {
     const index = cartMan.findIndex((cartItem) => cartItem.item._id === item._id);
     //have to remove the cost of the last item, so call this function
     handleQuantityChange(item, 0);
+    const newCart = [...cartMan];
     cartMan.splice(index, 1);
+    cartMan;
   }
 
   function handleCheckoutClick() {
@@ -36,6 +48,15 @@ export default function ({ items }) {
       body: JSON.stringify(data),
     })
     console.log("order has been sent!")
+    getUser();
+  }
+
+  function getUser(){
+  
+    for (let i = 0; i < users.length; i++) {
+      console.log("name: " + users[i].name);
+      console.log("email: " + users[i].email);
+    }
   }
 
   //get names of items and quantity
