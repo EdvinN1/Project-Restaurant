@@ -11,7 +11,8 @@ const ordersSchema = new Schema({
     itemName: String,
     quantity: Number
   }],
-  accepted: { type: Boolean, default: false }
+  accepted: { type: Boolean, default: false },
+  customerName: String
 })
 
 if (!mongoose.models.orders) {
@@ -24,6 +25,7 @@ adminRouter.post('/', async (request, response) => {
   order.orderDate = getDate();
   order.restaurantID = Math.floor(Math.random() * 5 + 1); //just a random number to simulate a restaurant
   order.items = request.body.items;
+  order.customerName = request.body.customerName;
   await order.save();
   response.sendStatus(201);
 })

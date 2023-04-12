@@ -4,7 +4,6 @@ import { useStates } from "react-easier";
 
 export default function ({ items }) {
   const cartMan = useStates("cartMan")
-
   const [users, setUsers] = useState([]);
 
   //need this part to compare with user
@@ -41,7 +40,8 @@ export default function ({ items }) {
       return;
     }
     //post the data to orders, function getNameAndId will return an object with name and quantity
-    const data = { items: getNameAndQuantity() };
+    console.log("customername: " + sessionStorage.getItem("name"));
+    const data = { items: getNameAndQuantity(), customerName: sessionStorage.getItem("name") };
     fetch('http://localhost:3000/api/orders', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -52,16 +52,13 @@ export default function ({ items }) {
   }
 
   function getUser(){
-  
-    for (let i = 0; i < users.length; i++) {
+/*     for (let i = 0; i < users.length; i++) {
       console.log("name: " + users[i].name);
       console.log("email: " + users[i].email);
-    }
-  
+    } */
    //empty the shopping cart
    cartMan.splice(0, cartMan.length);
    setTotPrice(0);
- 
    //show popup message
    alert("Your order has been sent!");
  }
@@ -94,7 +91,7 @@ export default function ({ items }) {
         <ul className="shopping-cart__list">
           {cartMan.map((menuItem) => (
             <li className="shopping-cart__item">
-            <img className="shopping-cart-img" onError={""} src={menuItem.item.picture}></img>
+            <img className="shopping-cart-img" src={menuItem.item.picture}></img>
               <p className={"item-name"}> {menuItem.item.name} </p>
               <p className={"price-per-item"}>Price: {menuItem.item.price} </p>
               <input

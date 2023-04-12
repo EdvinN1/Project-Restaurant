@@ -43,7 +43,8 @@ export default function () {
 
     //handle ready button, right now just deletes the order, maybe change it later
     function handleReadyClick(inData) {
-        console.log("delete");
+/*         let name = sessionStorage.getItem("name");
+        console.log("name: " + name); */
         fetch(`http://localhost:3000/api/orders/${inData._id}`, {
             method: 'DELETE',
             headers: {

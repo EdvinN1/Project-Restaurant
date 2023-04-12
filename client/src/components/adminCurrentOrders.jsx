@@ -14,6 +14,11 @@ export default function (props) {
 
   //accept button action
   function handleAcceptClick(inData) {
+    if(inData.customerName === "cena"){
+      console.log("name: " + inData.customerName);
+      console.log("hejhejhej");
+    }
+    console.log("utanför");
     //find the index of the item with the matching ID
     const index = orders.findIndex(item => item._id === inData._id);
     if (index >= 0) {
