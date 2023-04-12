@@ -66,7 +66,7 @@ export default function ({ items }) {
         <ul className="shopping-cart__list">
           {cartMan.map((menuItem) => (
             <li className="shopping-cart__item">
-            <img className="shopping-cart-img" src="https://ik.imagekit.io/schysstkak/photos/16x9/SCHYSST_KAK_Klassisk_Kebabrulle_Recept_16x9.png"></img>
+            <img className="shopping-cart-img" onError={""} src={menuItem.item.picture}></img>
               <p className={"item-name"}> {menuItem.item.name} </p>
               <p className={"price-per-item"}>Price: {menuItem.item.price} </p>
               <input
@@ -96,4 +96,5 @@ export default function ({ items }) {
       </section>
     </section>
   );
+
 }
