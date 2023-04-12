@@ -37,8 +37,6 @@ export const GlobalProvider = ({ children }) => {
     navigate('/');
   };
 
-  
-
   return (
     <GlobalContext.Provider value={{ 
         loggedIn, 
