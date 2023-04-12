@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "../styling/shopping-cart.css";
 import { useStates } from "react-easier";
+import { useNavigate } from "react-router-dom";
 
 export default function ({ items }) {
   const cartMan = useStates("cartMan")
+
+  const navigate = useNavigate()
+  const access = useStates("access")
+
+  if (!access.loggedIn) {
+    navigate('/');
+    return null;
+  }
 
   const [users, setUsers] = useState([]);
 
@@ -57,7 +66,14 @@ export default function ({ items }) {
       console.log("name: " + users[i].name);
       console.log("email: " + users[i].email);
     }
-  }
+  
+   //empty the shopping cart
+   cartMan.splice(0, cartMan.length);
+   setTotPrice(0);
+ 
+   //show popup message
+   alert("Your order has been sent!");
+ }
 
   //get names of items and quantity
   function getNameAndQuantity() {
