@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styling/shopping-cart.css";
 import { useStates } from "react-easier";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,16 @@ export default function ({ items }) {
     return null;
   }
 
+  const [users, setUsers] = useState([]);
+
+  //need this part to compare with user
+  useEffect(() => {
+    fetch('http://localhost:3000/api/accounts')
+        .then(response => response.json())
+        .then(data => setUsers(data))
+        .catch(error => console.error(error))
+}, []);
+
   //the total price, using a super formula to calculate
   const [totPrice, setTotPrice] = useState(calculateTotalPrice(cartMan));
 
@@ -28,7 +38,9 @@ export default function ({ items }) {
     const index = cartMan.findIndex((cartItem) => cartItem.item._id === item._id);
     //have to remove the cost of the last item, so call this function
     handleQuantityChange(item, 0);
+    const newCart = [...cartMan];
     cartMan.splice(index, 1);
+    cartMan;
   }
 
   function handleCheckoutClick() {
@@ -45,7 +57,23 @@ export default function ({ items }) {
       body: JSON.stringify(data),
     })
     console.log("order has been sent!")
+    getUser();
   }
+
+  function getUser(){
+  
+    for (let i = 0; i < users.length; i++) {
+      console.log("name: " + users[i].name);
+      console.log("email: " + users[i].email);
+    }
+  
+   //empty the shopping cart
+   cartMan.splice(0, cartMan.length);
+   setTotPrice(0);
+ 
+   //show popup message
+   alert("Your order has been sent!");
+ }
 
   //get names of items and quantity
   function getNameAndQuantity() {
@@ -75,7 +103,8 @@ export default function ({ items }) {
         <ul className="shopping-cart__list">
           {cartMan.map((menuItem) => (
             <li className="shopping-cart__item">
-              <p className={"price-per-item"}> {menuItem.item.name} </p>
+            <img className="shopping-cart-img" onError={""} src={menuItem.item.picture}></img>
+              <p className={"item-name"}> {menuItem.item.name} </p>
               <p className={"price-per-item"}>Price: {menuItem.item.price} </p>
               <input
                 className={"shopping-cart-input"}
@@ -90,7 +119,7 @@ export default function ({ items }) {
                 className={"shopping-cart__button"}
                 onClick={() => handleRemoveItem(menuItem.item)}
               >
-                Remove
+              <i className="material-icons">close</i>
               </button>
             </li>
           ))}
@@ -98,7 +127,7 @@ export default function ({ items }) {
       </section>
       <section className={"checkout-section"}>
         <p className={"total-cost-text"}>Total cost: {totPrice} SEK</p>
-        <button className="shopping-cart__button shopping-cart__button--checkout" onClick={() => handleCheckoutClick()}>
+        <button className="shopping-cart__button--checkout" onClick={() => handleCheckoutClick()}>
           Checkout
         </button>
       </section>

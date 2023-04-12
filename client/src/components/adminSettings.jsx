@@ -1,7 +1,9 @@
 export default function () {
+
+
     return (
         <div>
-            {"settings"}
+            <p>settings</p>
         </div>
     )
 }
