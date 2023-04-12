@@ -26,7 +26,7 @@ export default function () {
       
       if (access.admin) {
         // If the user is logged in as an admin, show the admin section
-        navigate('/admin-section');
+        
       } else {
         // If the user is logged in but not an admin, redirect to the homepage
         navigate('/');
