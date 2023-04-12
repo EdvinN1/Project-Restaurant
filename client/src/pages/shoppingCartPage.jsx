@@ -4,15 +4,6 @@ import { useStates } from "react-easier";
 
 export default function ({ items }) {
   const cartMan = useStates("cartMan")
-  const [users, setUsers] = useState([]);
-
-  //need this part to compare with user
-  useEffect(() => {
-    fetch('http://localhost:3000/api/accounts')
-        .then(response => response.json())
-        .then(data => setUsers(data))
-        .catch(error => console.error(error))
-}, []);
 
   //the total price, using a super formula to calculate
   const [totPrice, setTotPrice] = useState(calculateTotalPrice(cartMan));
@@ -37,9 +28,11 @@ export default function ({ items }) {
     //do nothing if the cart is empty
     if (cartMan.length === 0) {
       console.log("cart is empty!");
+      alert("cart is empty, go buy something!")
       return;
     }
     //post the data to orders, function getNameAndId will return an object with name and quantity
+    //also need the logged in user from the session
     console.log("customername: " + sessionStorage.getItem("name"));
     const data = { items: getNameAndQuantity(), customerName: sessionStorage.getItem("name") };
     fetch('http://localhost:3000/api/orders', {
@@ -47,15 +40,11 @@ export default function ({ items }) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     })
-    console.log("order has been sent!")
+ /*    console.log("order has been sent!") */
     getUser();
   }
 
   function getUser(){
-/*     for (let i = 0; i < users.length; i++) {
-      console.log("name: " + users[i].name);
-      console.log("email: " + users[i].email);
-    } */
    //empty the shopping cart
    cartMan.splice(0, cartMan.length);
    setTotPrice(0);
