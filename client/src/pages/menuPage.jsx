@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "../styling/menuPage.css";
 import { useEffect, useState } from "react";
 import { useStates } from "react-easier";
-import { GlobalContext } from "../GlobalContext";
 
 export default function () {
   const [menuItems, setMenuItems] = useState([]);

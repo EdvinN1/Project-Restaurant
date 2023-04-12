@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import "../styling/shopping-cart.css";
 import { useStates } from "react-easier";
+import { useNavigate } from "react-router-dom";
 
 export default function ({ items }) {
   const cartMan = useStates("cartMan")
+
+  const navigate = useNavigate()
+  const access = useStates("access")
+
+  if (!access.loggedIn) {
+    navigate('/');
+    return null;
+  }
 
   //the total price, using a super formula to calculate
   const [totPrice, setTotPrice] = useState(calculateTotalPrice(cartMan));
