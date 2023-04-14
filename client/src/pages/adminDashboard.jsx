@@ -60,9 +60,10 @@ export default function () {
         setSelectedCategory(categoryName);
     }
 
-    //handle ready button, right now just deletes the order, maybe change it later
+    //handle ready button, right now deletes the order, and sends alert, maybe do something more fancy later
     function handleReadyClick(inData) {
-        console.log("delete");
+        //an alert to confirm order is ready
+        sendAlert(inData.customerName);
         fetch(`http://localhost:3000/api/orders/${inData._id}`, {
             method: 'DELETE',
             headers: {
@@ -79,6 +80,21 @@ export default function () {
             })
             .catch(error => console.error(error));
     }
+
+    //sends in a name, will alert with name and corresponding mail
+    async function sendAlert(inName) {
+        try {
+          const response = await fetch(`http://localhost:3000/api/accounts/${inName}`);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+          alert("mail has been sent to: " + inName + " on: " + data.email);
+        } catch (error) {
+          console.error(`Error: ${error}`);
+          return null;
+        }
+      }
 
     return (
         <section className="adminWrapper">

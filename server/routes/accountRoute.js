@@ -26,6 +26,20 @@ accountRouter.get('/', async (request, response)=>{
     response.json(account)
 })
 
+accountRouter.get('/:name', async (request, response) => {
+    try {
+      const account = await mongoose.models.accounts.findOne({ name: request.params.name });
+      if (!account) {
+        return response.status(404).json({ message: 'Account not found' });
+      }
+      const { email } = account;
+      response.json({ email });
+    } catch (error) {
+      console.error(error);
+      response.status(500).json({ message: 'Server Error' });
+    }
+  });
+
 //delete account
 accountRouter.delete('/:id', async (request, response)=>{
     await mongoose.models.accounts.findByIdAndDelete(request.params.id)

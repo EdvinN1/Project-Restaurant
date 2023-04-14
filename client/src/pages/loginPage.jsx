@@ -25,6 +25,7 @@ export default function () {
             console.log(response)
             sessionStorage.setItem("loggedIn", response.loggedIn)
             sessionStorage.setItem("admin", response.admin)
+            sessionStorage.setItem("name", login.name)
     };
 
     if (access.loggedIn) {

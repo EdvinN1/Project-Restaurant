@@ -30,6 +30,7 @@ export const GlobalProvider = ({ children }) => {
     const response = await rawResponse.json();
     sessionStorage.removeItem("loggedIn", response.loggedIn)
     sessionStorage.removeItem("admin", response.admin)
+    sessionStorage.removeItem("name", null)
     updateLoggedIn(false);
     access.admin = false;
     access.loggedIn = false;
