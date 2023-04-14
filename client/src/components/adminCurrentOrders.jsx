@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 export default function (props) {
   const [orders, setOrders] = useState([]);
-  const [item, setItem] = useState("");
 
   //get all incoming orders
   useEffect(() => {
@@ -57,17 +56,6 @@ export default function (props) {
   //delete button action
   function handleDeclineClick(inData) {
     deleteInData(inData);
-  }
-
-  function mapItem(inId) {
-    fetch(`http://localhost:3000/api/foodItems/${inId}`)
-      .then(response => response.json())
-      .then(data => {
-        console.log("mapitemdata: " + data.name);
-        const newItems = [...items, data.name]
-        setItem(newItems);
-      })
-      .catch(error => console.error(error))
   }
 
   return (

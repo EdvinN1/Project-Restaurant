@@ -11,13 +11,6 @@ const foodItemsSchema = new Schema({
     picture: String
 })
 
-const cartSchema = new Schema({
-    items: [{
-        itemId: String,
-        quantity: Number
-    }]
-})
-
 mongoose.model('foodItems', foodItemsSchema)
 
 foodItemsRouter.get('/', async (request, response )=>{
@@ -34,9 +27,6 @@ foodItemsRouter.get('/:id', async (request, response )=>{
 foodItemsRouter.delete('/:id', async (request, response)=> {
     const foodItem = request.params.id
     const deleteResult = await mongoose.models.foodItems.deleteOne({_id: foodItem})
-
-/*     await mongoose.models.foodItems.findByIdAndDelete(request.params.id)
-    const result = await mongoose.models.foodItems.findById(request.params.id) */
     response.json({"deleted": (deleteResult===null)})
 })
 

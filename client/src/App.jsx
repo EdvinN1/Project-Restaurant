@@ -12,7 +12,7 @@ function App() {
     admin: false,
     loggedIn: false
   })
-  useStates("cart", [])
+  /* useStates("cart", []) */
   const access = useStates("access")
   useEffect(() => {
     const loggedIn = sessionStorage.getItem("loggedIn");
